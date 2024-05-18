@@ -1,0 +1,27 @@
+.Form-header {
+  border-radius: 30px;
+  text-align: center;
+  position: fixed;
+}
+.form-main {
+  box-shadow: 20px;
+  padding: 30px 30px 30px 30px;
+  margin: 30px;
+  background-color: #1d212a;
+}
+.heading {
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+}
+.div-1 {
+  justify-content: space-around;
+}
+.Form {
+  box-shadow: 0 4px 8px rgba(103, 104, 103, 0.4);
+  border-radius: 8px !important;
+}
+.button {
+  background-color: #5b5b5b;
+  border: none !important;
+}

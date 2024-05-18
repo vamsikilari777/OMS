@@ -1,0 +1,18 @@
+.dot {
+  display: flex;
+  flex-wrap: wrap;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 85vh;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(69, 86, 102) 0%,
+    rgb(34, 34, 34) 90%
+  );
+  border-radius: 10px;
+}
+
+.spy {
+  margin-bottom: 120px;
+}

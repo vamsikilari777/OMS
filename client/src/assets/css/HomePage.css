@@ -1,0 +1,62 @@
+.navbar {
+  background: #9d9ef7;
+  background: -webkit-linear-gradient(110deg, #9d9ef7 0%, #56f666 100%);
+  background: linear-gradient(110deg, #9d9ef7 0%, #56f666 100%);
+  height: auto;
+}
+
+.navbar-brand,
+.nav-link {
+  color: #fff !important;
+}
+
+.navbar-logo {
+  width: auto;
+  height: 80px;
+  margin: 0 auto;
+  /* padding-left: 30px; */
+}
+
+.nav-item {
+  font-size: 25px;
+  font-weight: 100px;
+  font-style: solid;
+  color: #333;
+  position: sticky;
+}
+
+.tech2 {
+  font-size: 100px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tech {
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.animatedhero {
+  animation: userMove 2s infinite alternate;
+}
+
+@keyframes userMove {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+.bottomFooter {
+  padding-top: 50px;
+}
+
+.hero-animated {
+  align-content: right;
+  width: auto;
+  height: 450px;
+}

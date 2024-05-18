@@ -1,0 +1,13 @@
+.Container {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 1px black;
+}
+
+@media (max-width: 400px) {
+  .Container {
+    max-width: 90%;
+  }
+}

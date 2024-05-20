@@ -9,6 +9,7 @@ function ReportsTable({ hospitals, handleShowModal }) {
       <Table striped bordered hover>
         <thead>
           <tr>
+            {/* This is an Table Header */}
             <th>ID</th>
             <th>Hospital Name</th>
             <th>Location</th>

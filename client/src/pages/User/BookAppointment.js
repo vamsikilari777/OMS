@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { Card, Button, Form, Row, Col } from "react-bootstrap";
-import "../../assets/css/AppointBookingForm.css";
-import baseURL from "../../config";
+import React, { useState } from "react"; // Import React and useState hook
+import { Card, Button, Form, Row, Col } from "react-bootstrap"; // Import necessary components from react-bootstrap
+import "../../assets/css/AppointBookingForm.css"; // Import CSS for styling
+import baseURL from "../../config"; // Import base URL for API requests
 
 function AppointmentBooking() {
+  // Define state to hold form data
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -18,24 +19,27 @@ function AppointmentBooking() {
     mobile_no: "",
   });
 
+  // Define state to hold form submission status
   const [formStatus, setFormStatus] = useState({
     submitted: false,
     error: "",
   });
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior
     try {
       const response = await fetch(`${baseURL}/api/bookAppointments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), // Send form data as JSON
       });
 
       if (response.ok) {
         console.log("Form data submitted successfully");
+        // Reset form data after successful submission
         setFormData({
           first_name: "",
           last_name: "",
@@ -49,47 +53,48 @@ function AppointmentBooking() {
           address: "",
           mobile_no: "",
         });
-        setFormStatus({ submitted: true, error: "" });
+        setFormStatus({ submitted: true, error: "" }); // Update form status
       } else {
         // Handle non-200 HTTP response
         throw new Error(`Failed to submit form data: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error submitting form data:", error.message);
-      setFormStatus({ submitted: false, error: error.message });
+      setFormStatus({ submitted: false, error: error.message }); // Update form status with error message
     }
   };
 
+  // Function to handle form input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // Destructure name and value from event target
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value, // Update form data state
     });
   };
 
   return (
     <div>
-      <Card className="Form form-main">
+      <Card className="Form form-main"> {/* Form container */}
         <div className="div-1 d-flex">
           <div className="heading float-start">
             <h3 className="heading-2">Appointment Details</h3>
           </div>
         </div>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}> {/* Form element with submit handler */}
           <Row>
             <Col>
               <Form.Control
                 name="first_name"
                 placeholder="Full Name"
-                required // Added required attribute for mandatory fields
+                required // Required attribute for mandatory fields
                 value={formData.first_name}
                 onChange={handleChange}
               />
               <br />
               <Form.Control
                 name="age"
-                type="number" // Change type to "number" for age
+                type="number" // Type "number" for age input
                 placeholder="Age"
                 value={formData.age}
                 onChange={handleChange}
@@ -97,9 +102,9 @@ function AppointmentBooking() {
               <br />
               <Form.Control
                 name="mobile_no"
-                type="tel" // Change type to "tel" for phone number
+                type="tel" // Type "tel" for phone number input
                 placeholder="Phone Number"
-                // pattern="[0-9]{10}" // Added pattern for 10-digit phone number
+                // pattern="[0-9]{10}" // Pattern for 10-digit phone number
                 value={formData.mobile_no}
                 onChange={handleChange}
               />
@@ -189,7 +194,7 @@ function AppointmentBooking() {
               <br />
               <Form.Control
                 name="email"
-                type="email" // Change type to "email" for email field
+                type="email" // Type "email" for email input
                 placeholder="Email"
                 required
                 value={formData.email}
@@ -212,11 +217,11 @@ function AppointmentBooking() {
           </Row>
         </Form>
         {formStatus.error && (
-          <div className="error-message">{formStatus.error}</div>
+          <div className="error-message">{formStatus.error}</div> // Display error message if form submission fails
         )}
       </Card>
     </div>
   );
 }
 
-export default AppointmentBooking;
+export default AppointmentBooking; // Export AppointmentBooking component

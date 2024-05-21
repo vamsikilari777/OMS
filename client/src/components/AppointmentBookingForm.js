@@ -55,7 +55,7 @@ function AppointmentBookingModal() {
         // Handle non-200 HTTP response
         throw new Error(`Failed to submit form data: ${response.statusText}`);
       }
-    } catch (error) {
+    }  catch (error) {
       console.error("Error submitting form data:", error.message);
       setFormStatus({ submitted: false, error: error.message });
     }

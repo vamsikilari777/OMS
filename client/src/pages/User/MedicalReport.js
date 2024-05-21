@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import "../../assets/css/medicalReportForm.css";
-import baseURL from "../../config";
+import React, { useState } from "react"; // Import React and useState hook
+import "../../assets/css/medicalReportForm.css"; // Import custom CSS for the form
+import baseURL from "../../config"; // Import base URL for API requests
 
 function MedicalReportForm() {
+  // Define state to hold form data with useState hook
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -13,18 +14,23 @@ function MedicalReportForm() {
     reports: "", // Store the selected PDF file
   });
 
+  // Handle changes in form inputs
   const handleChange = (e) => {
     if (e.target.type === "file") {
+      // Handle file input separately
       setFormData({ ...formData, reports: e.target.files[0] });
     } else {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
     }
   };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
     try {
-      const formDataToSend = new FormData();
+      const formDataToSend = new FormData(); // Create FormData object for file upload
+      // Append form data to FormData object
       formDataToSend.append("name", formData.name);
       formDataToSend.append("age", formData.age);
       formDataToSend.append("gender", formData.gender);
@@ -33,6 +39,7 @@ function MedicalReportForm() {
       formDataToSend.append("diseases", formData.diseases);
       formDataToSend.append("reports", formData.reports); // Ensure 'reports' matches the key expected by the backend
 
+      // Send form data to the backend
       const response = await fetch(`${baseURL}/api/report`, {
         method: "POST",
         body: formDataToSend,
@@ -60,15 +67,15 @@ function MedicalReportForm() {
         error.message ||
           "Error submitting medical report. Please try again later."
       );
-      console.error(error);
+      console.error(error); // Log the error to the console
     }
   };
 
   return (
-    <div className="medical-report-form-container">
-      <div className="form-sub-div">
+    <div className="medical-report-form-container"> {/* Main container for the form */}
+      <div className="form-sub-div"> {/* Sub container for the form content */}
         <h2>Medical Report Form</h2>
-        <form onSubmit={handleSubmit} className="medical-report-form">
+        <form onSubmit={handleSubmit} className="medical-report-form"> {/* Form submission handler */}
           <div className="form-group">
             <label htmlFor="patientName">Patient Name:</label>
             <input
@@ -111,8 +118,10 @@ function MedicalReportForm() {
               <option value="other">Other</option>
             </select>
           </div>
+
           <div className="form-group">
-            <label htmlFor="hospital_id">Hospital ID:</label> <br></br>
+            <label htmlFor="hospital_id">Hospital ID:</label> 
+            <br></br>
             <select
               className="select-one"
               type="select-one"
@@ -130,7 +139,8 @@ function MedicalReportForm() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="doctor_id">Doctor ID:</label> <br></br>
+            <label htmlFor="doctor_id">Doctor ID:</label> 
+            <br></br>
             <select
               className="select-one"
               type="select-one"
@@ -151,7 +161,8 @@ function MedicalReportForm() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="diseases">Disease:</label> <br></br>
+            <label htmlFor="diseases">Disease:</label> 
+            <br></br>
             <select
               className="select-one"
               type="select-one"
@@ -175,14 +186,13 @@ function MedicalReportForm() {
               type="file"
               id="reports"
               name="reports"
-              accept=".pdf"
-              // value={formData.reports}
+              accept=".pdf" // Accept only PDF files
               onChange={handleChange}
               required
             />
           </div>
 
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button"> {/* Submit button */}
             Submit Report
           </button>
         </form>
@@ -191,4 +201,4 @@ function MedicalReportForm() {
   );
 }
 
-export default MedicalReportForm;
+export default MedicalReportForm; // Export the MedicalReportForm component

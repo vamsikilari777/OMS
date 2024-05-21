@@ -6,23 +6,23 @@ import NavHeader from "../../components/NavHeader";
 import SubMenu from "../../components/SubMenu";
 import DoctorItems from "../../utils/DoctorItems";
 
-//Doctor dashboard component
+// Doctor dashboard component
 const DoctorDashboard = () => {
   const [activeItem, setActiveItem] = useState(DoctorItems[0]?.name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
-  const isMobile = window.innerWidth <= 768;
-
   const location = useLocation();
   const user = location.state?.user; // Access user data passed via route state
 
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
+    } else {
+      setIsSidebarOpen(true);
+    }
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsSidebarOpen(false);
-      } else {
-        setIsSidebarOpen(true);
-      }
-    };
+    handleResize(); // Set initial state based on the current window width
 
     window.addEventListener("resize", handleResize);
 
@@ -33,6 +33,7 @@ const DoctorDashboard = () => {
   }, []);
 
   const handleToggle = () => {
+    if (window.innerWidth > 768) return; // Prevent toggling on desktop view
     setIsSidebarOpen(!isSidebarOpen);
     console.log("Toggling sidebar", isSidebarOpen ? "Closed" : "Opened");
   };
@@ -40,13 +41,13 @@ const DoctorDashboard = () => {
   const handleClick = (item, isMainNav) => {
     console.log("Handle click:", item);
     setActiveItem(item !== activeItem ? item : ""); // Toggle active item
-    if (isMainNav && isMobile) {
+    if (isMainNav && window.innerWidth <= 768) {
       setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
     }
   };
 
   const handleSubItemClick = () => {
-    if (isMobile) {
+    if (window.innerWidth <= 768) {
       setIsSidebarOpen(false); // Close sidebar when a subnav item is clicked
     }
   };
@@ -84,11 +85,7 @@ const DoctorDashboard = () => {
               </div>
             ))}
           </aside>
-          <div
-            className={`content ${
-              isSidebarOpen ? "shift-right" : "shift-left"
-            }`}
-          >
+          <div className={`content ${isSidebarOpen ? "shift-right" : "shift-left"}`}>
             <div className="main-content">
               <div className="content-wrapper">
                 {DoctorItems.map(

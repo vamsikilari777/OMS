@@ -1,7 +1,7 @@
 // Import the React library
 import React from "react";
 import { Modal, Button } from "react-bootstrap"; // Import Modal and Button components from react-bootstrap
-// Define a functional component named PatientHistoryModal
+// Define the functional component named PatientHistoryModal
 const PatientHistoryModal = ({ show, onHide }) => {
   // Define a constant for the patient's history text
   const patientHistory = "Patient's history goes here...";

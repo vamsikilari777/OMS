@@ -30,7 +30,7 @@
 
 .user-icon {
   width: auto;
-  height: 350px;
+  height: 110%;
   margin: auto;
 }
 
@@ -40,5 +40,22 @@
   }
   100% {
     transform: translateY(20px);
+  }
+}
+
+
+/* Extra small devices (phones) */
+@media only screen and (max-width: 575.98px) {
+
+  .user-animation{
+    margin-bottom: 100px !important;
+  }
+  .login-page{
+    height: 100% !important;
+  }
+  .user-icon {
+    /* height: calc(100%-100px) !important; */
+    width: calc(100% - 20px) !important;
+
   }
 }

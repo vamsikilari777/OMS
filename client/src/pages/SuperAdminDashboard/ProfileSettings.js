@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import "../../assets/css/ProfileSettings.css";
+import React, { useState } from "react"; //imported usestate hook from react
+import { Box, Button, TextField, Typography } from "@mui/material"; // Import components from Material-UI
+import "../../assets/css/ProfileSettings.css"; // Import custom CSS for profile settings
 
 export default function AccountSettings() {
+  // State variables for current username, new username, email, password, confirm password, and password match
   const [userName, setUserName] = useState("");
   const [newUserName, setNewUserName] = useState(""); // Add state for new username
   const [email, setEmail] = useState("");
@@ -10,25 +11,29 @@ export default function AccountSettings() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isMatch, setIsMatch] = useState(true);
 
+  // Function to handle password change
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
     setIsMatch(event.target.value === confirmPassword);
   };
 
+  // Function to handle confirm password change
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
     setIsMatch(event.target.value === password);
   };
 
+  // Function to handle current username change
   const handleUserNameChange = (event) => {
     setUserName(event.target.value);
   };
 
+  // Function to handle new username change
   const handleNewUserNameChange = (event) => {
-    // Function to handle new username change
     setNewUserName(event.target.value);
   };
 
+  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log({
@@ -43,10 +48,13 @@ export default function AccountSettings() {
   return (
     <div className="Container">
       <Box padding="10" margin={0}>
+        {/* Title */}
         <Typography variant="h5" gutterBottom alignContent={"center"}>
           Change Username and Password
         </Typography>
+        {/* Form */}
         <form onSubmit={handleSubmit}>
+          {/* Current Username input */}
           <TextField
             label="Current Username"
             variant="outlined"
@@ -56,6 +64,7 @@ export default function AccountSettings() {
             onChange={handleUserNameChange}
             required
           />
+          {/* Email input */}
           <TextField
             label="Email"
             variant="outlined"
@@ -66,6 +75,7 @@ export default function AccountSettings() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          {/* New Password input */}
           <TextField
             label="New Password"
             variant="outlined"
@@ -77,6 +87,7 @@ export default function AccountSettings() {
             required
             error={!isMatch}
           />
+          {/* Confirm Password input */}
           <TextField
             label="Confirm Password"
             variant="outlined"
@@ -88,11 +99,13 @@ export default function AccountSettings() {
             required
             error={!isMatch}
           />
+          {/* Error message for password mismatch */}
           {!isMatch && (
             <Typography color="error" variant="body2" gutterBottom>
               Passwords do not match
             </Typography>
           )}
+          {/* Save button */}
           <Button
             type="submit"
             variant="contained"

@@ -18,21 +18,26 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import baseURL from "../../config";
 
 const Hospital = () => {
+  // Check if the screen size is mobile
   const isMobile = useMediaQuery("(max-width:600px)");
+    // State variables
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [tableData, setTableData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
 
+// Dark theme for the UI
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
     },
   });
 
+  // Fetch data from the backend API when component mounts
   useEffect(() => {
     fetchData();
   }, []);
 
+// Function to fetch hospital data from the backend
   const fetchData = async () => {
     try {
       const response = await fetch(`${baseURL}/admin/hospitals`); // Corrected URL
@@ -45,7 +50,7 @@ const Hospital = () => {
       console.error("Error fetching data:", error);
     }
   };
-
+ // Function to handle creation of a new hospital
   const handleCreateNewRow = async (values) => {
     try {
       const response = await fetch(`${baseURL}/admin/hospitals`, {
@@ -56,8 +61,8 @@ const Hospital = () => {
         body: JSON.stringify(values),
       });
       if (response.ok) {
-        fetchData();
-        setCreateModalOpen(false);
+        fetchData();  // Refresh the table data after successful creation
+        setCreateModalOpen(false); // Close the create modal
       } else {
         console.error("Error creating hospital:", response.statusText);
       }
@@ -65,7 +70,7 @@ const Hospital = () => {
       console.error("Error creating hospital:", error);
     }
   };
-
+ // Function to handle saving edits to a hospital row
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     try {
       const response = await fetch(
@@ -79,8 +84,8 @@ const Hospital = () => {
         }
       );
       if (response.ok) {
-        fetchData();
-        exitEditingMode();
+        fetchData(); // Refresh the table data after successful update
+        exitEditingMode(); // Exit editing mode
       } else {
         console.error("Error updating hospital:", response.statusText);
       }
@@ -88,7 +93,7 @@ const Hospital = () => {
       console.error("Error updating hospital:", error);
     }
   };
-
+  // Function to handle deletion of a hospital row
   const handleDeleteRow = async (row) => {
     if (
       window.confirm(`Are you sure you want to delete ${row.original.name}?`)
@@ -101,7 +106,7 @@ const Hospital = () => {
           }
         );
         if (response.ok) {
-          fetchData();
+          fetchData(); // Refresh the table data after successful deletion
         } else {
           console.error("Error deleting hospital:", response.statusText);
         }
@@ -110,7 +115,7 @@ const Hospital = () => {
       }
     }
   };
-
+// Define columns for the MaterialReactTable component
   const columns = useMemo(
     () => [
       {
@@ -166,6 +171,7 @@ const Hospital = () => {
     <>
       <ThemeProvider theme={darkTheme}>
         <div>
+          {/* MaterialReactTable component for displaying hospital data */}
           <MaterialReactTable
             columns={columns}
             data={tableData}
@@ -174,6 +180,7 @@ const Hospital = () => {
             enableEditing
             onEditingRowSave={handleSaveRowEdits}
             onEditingRowCancel={() => setValidationErrors({})}
+             // Custom rendering for row actions (Edit and Delete buttons)
             renderRowActions={({ row, table }) => (
               <Box sx={{ display: "flex", gap: "1rem" }}>
                 <Tooltip arrow placement="left" title="Edit">
@@ -191,6 +198,7 @@ const Hospital = () => {
                 </Tooltip>
               </Box>
             )}
+             // Custom rendering for top toolbar actions (Add Hospital button)
             renderTopToolbarCustomActions={() => (
               <Button
                 color="secondary"
@@ -201,6 +209,7 @@ const Hospital = () => {
               </Button>
             )}
           />
+          {/* Modal for creating a new hospital */}
           <CreateNewAccountModal
             open={createModalOpen}
             onClose={() => setCreateModalOpen(false)}
@@ -212,14 +221,16 @@ const Hospital = () => {
     </>
   );
 };
-
+// Modal component for creating a new hospital
 const CreateNewAccountModal = ({ open, onClose, onSubmit, isMobile }) => {
+   // State for form values
   const [values, setValues] = useState({
     name: "",
     address: "",
     phone_number: "",
   });
 
+  // Function to handle form submission
   const handleSubmit = () => {
     onSubmit(values);
     onClose();
@@ -270,4 +281,4 @@ const CreateNewAccountModal = ({ open, onClose, onSubmit, isMobile }) => {
   );
 };
 
-export default Hospital;
+export default Hospital; //exporting the Hospital component

@@ -22,21 +22,24 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import baseURL from "../../config";
 
 const UserDetails = () => {
+   // Dark theme for the UI
   const darkTheme = createTheme({
     palette: {
       mode: "dark", // Switches the palette to dark mode
     },
   });
-
+// Check if the screen size is mobile
   const isMobile = useMediaQuery("(max-width:600px)");
+   // State variables
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [tableData, setTableData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
 
+// Fetch user details when component mounts
   useEffect(() => {
     fetchData();
   }, []);
-
+ // Function to fetch user details
   const fetchData = async () => {
     try {
       const response = await fetch(`${baseURL}/admin/users`);
@@ -46,7 +49,7 @@ const UserDetails = () => {
       console.error("Error fetching data:", error);
     }
   };
-
+ // Function to handle creation of a new user
   const handleCreateNewRow = async (values) => {
     try {
       const response = await fetch(`${baseURL}/admin/register`, {
@@ -57,8 +60,8 @@ const UserDetails = () => {
         body: JSON.stringify(values),
       });
       if (response.ok) {
-        fetchData();
-        setCreateModalOpen(false);
+        fetchData(); // Refresh user data after creation
+        setCreateModalOpen(false);  // Close the create modal
       } else {
         console.error("Error creating user:", response.statusText);
       }
@@ -66,7 +69,7 @@ const UserDetails = () => {
       console.error("Error creating user:", error);
     }
   };
-
+ // Function to handle saving edits to a user
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     try {
       const response = await fetch(`${baseURL}/admin/users/${row.original.id}`, {
@@ -77,8 +80,8 @@ const UserDetails = () => {
         body: JSON.stringify(values),
       });
       if (response.ok) {
-        fetchData();
-        exitEditingMode();
+        fetchData(); // Refresh user data after update
+        exitEditingMode(); // Exit editing mode
       } else {
         console.error("Error updating user:", response.statusText);
       }
@@ -87,6 +90,7 @@ const UserDetails = () => {
     }
   };
 
+  // Function to handle deletion of a user
   const handleDeleteRow = async (row) => {
     if (
       window.confirm(
@@ -101,7 +105,7 @@ const UserDetails = () => {
           }
         );
         if (response.ok) {
-          fetchData();
+          fetchData(); // Refresh user data after deletion
         } else {
           console.error("Error deleting user:", response.statusText);
         }
@@ -110,6 +114,7 @@ const UserDetails = () => {
       }
     }
   };
+  // Define columns for the MaterialReactTable component
   const columns = useMemo(
     () => [
       {
@@ -166,11 +171,12 @@ const UserDetails = () => {
     ],
     [validationErrors]
   );
-
+ // Render the UserDetails component
   return (
     <>
       <ThemeProvider theme={darkTheme}>
         <div>
+          {/* MaterialReactTable component for displaying user details */}
           <MaterialReactTable
             columns={columns}
             data={tableData}
@@ -179,6 +185,7 @@ const UserDetails = () => {
             enableEditing
             onEditingRowSave={handleSaveRowEdits}
             onEditingRowCancel={() => setValidationErrors({})}
+             // Custom rendering for row actions (Edit and Delete buttons)
             renderRowActions={({ row, table }) => (
               <Box sx={{ display: "flex", gap: "0.1rem" }}>
                 <Tooltip arrow placement="left" title="Edit">
@@ -196,6 +203,7 @@ const UserDetails = () => {
                 </Tooltip>
               </Box>
             )}
+            // Custom rendering for top toolbar actions (Create New User button)
             renderTopToolbarCustomActions={() => (
               <Button
                 color="secondary"
@@ -206,6 +214,7 @@ const UserDetails = () => {
               </Button>
             )}
           />
+           {/* Modal for creating a new user */}
           <CreateNewAccountModal
             open={createModalOpen}
             onClose={() => setCreateModalOpen(false)}
@@ -217,7 +226,7 @@ const UserDetails = () => {
     </>
   );
 };
-
+ // Modal component for creating a new user
 const CreateNewAccountModal = ({ open, onClose, onSubmit, isMobile }) => {
   const [values, setValues] = useState({
     username: "",
@@ -309,4 +318,4 @@ const CreateNewAccountModal = ({ open, onClose, onSubmit, isMobile }) => {
 // const validateRequired = (value) => !!value.trim();
 // const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-export default UserDetails;
+export default UserDetails; //Exporting the Userdetails component

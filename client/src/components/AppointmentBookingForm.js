@@ -3,7 +3,7 @@ import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import "../assets/css/AppointBookingForm.css";
 import baseURL from "../config";
 
-function AppointmentBookingModal() {
+function AppointmentBookingModal() {  //Appoinmetntform
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",

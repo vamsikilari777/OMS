@@ -55,6 +55,7 @@ const ProfileModal = ({ show, onHide, user }) => {
   };
 
   return (
+  
     <Modal show={show} onHide={onHide} centered>
       <Form onSubmit={(e) => handleUpdate(user.id)}>
         <Modal.Header closeButton>

@@ -1,7 +1,7 @@
 import React from "react"; // Import the React library
 import { Modal, Button } from "react-bootstrap"; // Import Modal and Button components from react-bootstrap
 
-// Define a functional component named InvoiceModal
+// Define the functional component named InvoiceModal
 const InvoiceModal = ({ show, onHide, invoiceDetails }) => {
   // Return the Modal component, which is controlled by the show and onHide props
   return (

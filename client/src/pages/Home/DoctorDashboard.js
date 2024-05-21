@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/css/MainPage.css";
 import { useLocation } from "react-router-dom";
 import NavButton from "../../components/NavButton";
@@ -9,11 +9,28 @@ import DoctorItems from "../../utils/DoctorItems";
 //Doctor dashboard component
 const DoctorDashboard = () => {
   const [activeItem, setActiveItem] = useState(DoctorItems[0]?.name);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const isMobile = window.innerWidth <= 768;
 
   const location = useLocation();
   const user = location.state?.user; // Access user data passed via route state
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleToggle = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -30,8 +47,8 @@ const DoctorDashboard = () => {
 
   const handleSubItemClick = () => {
     if (isMobile) {
-      setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
-    } // Close sidebar when a subnav item is clicked
+      setIsSidebarOpen(false); // Close sidebar when a subnav item is clicked
+    }
   };
 
   return (

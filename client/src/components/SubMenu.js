@@ -1,9 +1,17 @@
-import React, { useRef } from "react";
-import NavButton from "./NavButton";
+import React, { useRef } from "react"; // Importing React and useRef hook
+import NavButton from "./NavButton"; // Importing NavButton component
 
+/**
+ * SubMenu Component
+ * @param {Object} item - Menu item object containing name and items
+ * @param {string} activeItem - Active menu item
+ * @param {Function} handleClick - Function to handle click events
+ * @returns {JSX.Element} - Returns the JSX for the SubMenu component
+ */
 export const SubMenu = ({ item, activeItem, handleClick }) => {
-  const navRef = useRef(null);
+  const navRef = useRef(null); // Creating a ref for sub-menu navigation
 
+  // Function to check if sub-menu is open
   const isSubNavOpen = (item, items) =>
     items.some((i) => i === activeItem) || item === activeItem;
 
@@ -17,6 +25,7 @@ export const SubMenu = ({ item, activeItem, handleClick }) => {
       }}
     >
       <div ref={navRef} className="sub-nav-inner">
+        {/* Rendering sub-menu items */}
         {item?.items.map((subItem) => (
           <NavButton
             key={subItem}
@@ -30,4 +39,4 @@ export const SubMenu = ({ item, activeItem, handleClick }) => {
   );
 };
 
-export default SubMenu;
+export default SubMenu; // Exporting SubMenu component as default

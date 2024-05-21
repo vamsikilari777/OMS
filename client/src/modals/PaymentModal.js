@@ -1,7 +1,7 @@
 import React from "react"; // Import the React library
 import { Modal, Button } from "react-bootstrap"; // Import Modal and Button components from react-bootstrap
 
-// Define a functional component named PaymentModal
+// Define the functional component named PaymentModal
 const PaymentModal = ({ show, onHide, invoiceDetails }) => {
   // Check if invoiceDetails is null
   if (!invoiceDetails) {

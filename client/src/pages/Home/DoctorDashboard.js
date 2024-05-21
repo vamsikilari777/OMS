@@ -6,6 +6,7 @@ import NavHeader from "../../components/NavHeader";
 import SubMenu from "../../components/SubMenu";
 import DoctorItems from "../../utils/DoctorItems";
 
+//Doctor dashboard component
 const DoctorDashboard = () => {
   const [activeItem, setActiveItem] = useState(DoctorItems[0]?.name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);

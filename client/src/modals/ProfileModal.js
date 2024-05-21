@@ -3,7 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap"; // Import Modal, Button, 
 import "../assets/css/RegisterModal.css"; // Import custom CSS for the modal
 import baseURL from "../config"; // Import the baseURL configuration
 
-// Define a functional component named ProfileModal
+// Define the functional component named ProfileModal
 const ProfileModal = ({ show, onHide, user }) => {
   // Define state for hospital details with useState hook
   const [hospital, setHospital] = useState({

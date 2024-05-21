@@ -1,4 +1,4 @@
-// Import the React library 
+// Import the React library
 import React from "react";
 // Import the Modal component from react-bootstrap library
 import { Modal } from "react-bootstrap";

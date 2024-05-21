@@ -1,10 +1,16 @@
-import React, { useState } from "react";
-import "../assets/css/Popup.css";
-import Alert from "@mui/material/Alert";
-import CheckIcon from "@mui/icons-material/Check";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
+import React, { useState } from "react"; // Importing React for component creation and useState hook for state management
+import "../assets/css/Popup.css"; // Importing CSS for styling
+import Alert from "@mui/material/Alert"; // Importing Alert component from Material-UI
+import CheckIcon from "@mui/icons-material/Check"; // Importing CheckIcon component from Material-UI
+import IconButton from "@mui/material/IconButton"; // Importing IconButton component from Material-UI
+import CloseIcon from "@mui/icons-material/Close"; // Importing CloseIcon component from Material-UI
 
+/**
+ * Popup Component
+ * @param {string} message - Message to be displayed in the popup
+ * @param {function} onClose - Function to handle closing the popup
+ * @returns {JSX.Element} - Returns the JSX for the Popup component
+ */
 function Popup({ message, onClose }) {
   const [isOpen, setIsOpen] = useState(true); // State to manage whether the popup is open or closed
 
@@ -21,19 +27,19 @@ function Popup({ message, onClose }) {
         <div className="popup-container">
           <div className="popup-content">
             <Alert
-              icon={<CheckIcon fontSize="18px" />}
-              severity="success"
+              icon={<CheckIcon fontSize="18px" />} // Check icon for success message
+              severity="success" // Severity set to success
               action={
                 <IconButton
                   size="small"
                   onClick={closePopup}
                   aria-label="close"
                 >
-                  <CloseIcon fontSize="small" />
+                  <CloseIcon fontSize="small" /> {/* Close icon */}
                 </IconButton>
               }
             >
-              <h5> {message} </h5>
+              <h5> {message} </h5> {/* Display message */}
             </Alert>
           </div>
         </div>
@@ -42,4 +48,4 @@ function Popup({ message, onClose }) {
   );
 }
 
-export default Popup;
+export default Popup; // Export the Popup component as default

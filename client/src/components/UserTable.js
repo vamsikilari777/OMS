@@ -1,96 +1,95 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
-import { Table, Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react"; // Import React and necessary hooks
+import { Table, Button } from "react-bootstrap"; // Import Table and Button components from react-bootstrap
 
 const UserTable = () => {
-  const [accounts, setAccounts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [accounts, setAccounts] = useState([]); // State to store user accounts
+  const [currentPage, setCurrentPage] = useState(1); // State to track current page number
+  const [totalPages, setTotalPages] = useState(1); // State to store total number of pages
 
+  // Function to fetch user data
   const fetchData = async () => {
     try {
       const response = await fetch(
         `${baseURL}/admin/allUsers?page=${currentPage}`
-      );
-      const data = await response.json();
+      ); // Fetch user data from the server
+      const data = await response.json(); // Extract JSON data from the response
       console.log("Fetched data:", data);
 
-      const userData = [...data]; // Using spread operator to copy the array
+      const userData = [...data]; // Copy the fetched data array using spread operator
       console.log(userData);
 
-      setAccounts(userData);
-      setTotalPages(data.length);
+      setAccounts(userData); // Update the state with fetched data
+      setTotalPages(data.length); // Set total pages
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data:", error); // Log error if fetching data fails
     }
   };
 
+  // Effect to fetch data when currentPage changes
   useEffect(() => {
     fetchData();
-  }, [currentPage]); // Fetch data when currentPage changes
+  }, [currentPage]);
 
+  // Function to handle next page button click
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
+  // Function to handle previous page button click
   const handlePreviousPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
+  // Function to handle update user data
   const handleUpdate = async (id) => {
     try {
-      // Make a request to update data for the specified id
       const response = await fetch(`/admin/allUsers/${id}`, {
-        method: "PUT", // Assuming you use a PUT request for updating data
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        // Add the data you want to update here
         body: JSON.stringify({
           /* Add updated data here */
         }),
-      });
-      // Check if the request was successful
+      }); // Make a request to update data for the specified id
       if (response.ok) {
-        // Update the local state or fetch updated data
-        console.log("Successfully updated data");
-        fetchData();
+        console.log("Successfully updated data"); // Log success message if update is successful
+        fetchData(); // Fetch updated data
       } else {
-        console.error("Failed to update data:", response.statusText);
+        console.error("Failed to update data:", response.statusText); // Log error message if update fails
       }
     } catch (error) {
-      console.error("Error updating data:", error);
+      console.error("Error updating data:", error); // Log error if updating data fails
     }
   };
 
+  // Function to handle delete user data
   const handleDelete = async (id) => {
-    // Show a confirmation dialog before deleting
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this user?"
-    );
+    ); // Show confirmation dialog before deleting
     if (confirmDelete) {
       try {
-        // Make a request to delete data for the specified id
         const response = await fetch(`/admin/allUsers/${id}`, {
-          method: "DELETE", // Assuming you use a DELETE request for deleting data
-        });
-        // Check if the request was successful
+          method: "DELETE",
+        }); // Make a request to delete data for the specified id
         if (response.ok) {
-          // Update the local state or fetch updated data
-          console.log("Successfully deleted data");
-          fetchData();
+          console.log("Successfully deleted data"); // Log success message if delete is successful
+          fetchData(); // Fetch updated data
         } else {
-          console.error("Failed to delete data:", response.statusText);
+          console.error("Failed to delete data:", response.statusText); // Log error message if delete fails
         }
       } catch (error) {
-        console.error("Error deleting data:", error);
+        console.error("Error deleting data:", error); // Log error if deleting data fails
       }
     }
   };
 
   return (
     <div>
-      <h2>All User Roles</h2>
+      <h2>All User Roles</h2> {/* Heading for user table */}
+      {/* Render user table if accounts array is not empty */}
       {accounts && accounts.length > 0 ? (
         <Table striped bordered hover>
           <thead>
@@ -116,12 +115,14 @@ const UserTable = () => {
                 <td>{account.hospital_name}</td>
                 <td>{account.location}</td>
                 <td>
+                  {/* Button to update user data */}
                   <Button
                     variant="primary"
                     onClick={() => handleUpdate(account.id)}
                   >
                     Update
                   </Button>
+                  {/* Button to delete user data */}
                   <Button
                     className="ms-2"
                     variant="danger"
@@ -135,11 +136,14 @@ const UserTable = () => {
           </tbody>
         </Table>
       ) : (
-        <p>Sorry..!Currently There No Further Data Here</p>
+        // Render message if accounts array is empty
+        <p>Sorry..! Currently There Are No Further Data Here</p>
       )}
+      {/* Button to navigate to previous page */}
       <Button disabled={currentPage === 1} onClick={handlePreviousPage}>
         Previous
       </Button>{" "}
+      {/* Button to navigate to next page */}
       <Button
         className="ms-2"
         disabled={currentPage >= totalPages - 1}

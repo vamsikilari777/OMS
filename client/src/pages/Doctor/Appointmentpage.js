@@ -1,75 +1,81 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { MaterialReactTable } from "material-react-table";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import baseURL from "../../config";
+import React, { useEffect, useState, useMemo } from "react"; // Imported necessary hooks and components from React
+import { MaterialReactTable } from "material-react-table"; // Imported the MaterialReactTable component
+import { createTheme, ThemeProvider } from "@mui/material/styles"; // Imported MUI theme & components
+import baseURL from "../../config"; // Imported baseURL config file
 
 const Appointments = () => {
-  const darkTheme = createTheme({
+  
+  const darkTheme = createTheme({    // Created a dark theme using MUI's createTheme function
     palette: {
-      mode: "dark", // Switches the palette to dark mode
+      mode: "dark",                  // Sets the theme mode to dark
     },
   });
 
-  const [data, setData] = useState([]);
+  
+  const [data, setData] = useState([]);  // Using useState hook for storing fetched data
 
+                                 
   useEffect(() => {
-    fetchData();
+    fetchData();                     // using useEffect hook to fetch data
   }, []);
 
-  const fetchData = async () => {
+  
+  const fetchData = async () => {    //  This is a function to fetch appointment data from the API
     try {
-      const response = await fetch(`${baseURL}/doctor/getAllAppointments`);
-      const data = await response.json();
-      setData(data);
+      const response = await fetch(`${baseURL}/doctor/getAllAppointments`); // Fetching data from the API
+      const data = await response.json(); // Parsing the JSON response (converting the text into object)
+      setData(data); // Updating the state with fetched data
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data:", error); // Findouting the errors
     }
   };
 
-  const columns = useMemo(
+  
+  const columns = useMemo(     // useMemo hook to memoize the column definitions(to increase the performance )
     () => [
       {
-        accessorKey: "id",
-        header: "Patient ID",
-        enableEditing: false,
-        size: 80,
+        accessorKey: "id", // Column for patient ID
+        header: "Patient ID", // Header text for the column
+        enableEditing: false, // Disables editing for this column (we cant edit this column)
+        size: 80, // sets Width of the column
       },
       {
-        accessorKey: "first_name",
-        header: "User Name",
-        size: 80,
+        accessorKey: "first_name", // Column for user's first name
+        header: "User Name", // Header text for the column
+        size: 80,  // sets Width of the column
       },
       {
-        accessorKey: "date_of_appointment",
-        header: "Date of Appointment",
-        size: 80,
+        accessorKey: "date_of_appointment", // Column for the appointment date
+        header: "Date of Appointment", // Header text for the column
+        size: 80,  //sets Width of the column
       },
       {
-        accessorKey: "time_of_appointment",
-        header: "Time of Appointment",
-        size: 80,
+        accessorKey: "time_of_appointment", // Column for the appointment time
+        header: "Time of Appointment", // Header text for the column
+        size: 80,  // sets Width of the column
       },
       {
-        accessorKey: "status", //normal accessorKey
-        header: "Status",
-        size: 80,
+        accessorKey: "status", // Column for the appointment status
+        header: "Status", // Header text for the column
+        size: 80,  // sets Width of the column
       },
       {
-        accessorKey: "appointment_type", //normal accessorKey
-        header: "Appointment Type",
-        size: 80,
+        accessorKey: "appointment_type", // Column for the type of appointment
+        header: "Appointment Type", // Header text for the column
+        size: 80, // sets Width of the column
       },
     ],
-    []
+    [] // Empty dependency array ensures this is only created once
   );
 
   return (
     <div>
-      <ThemeProvider theme={darkTheme}>
-        <MaterialReactTable columns={columns} data={data} />
+                                         
+      <ThemeProvider theme={darkTheme}> {/* Applying the dark theme to the table */}                                       
+        <MaterialReactTable columns={columns} data={data} />  {/* Rendering the table with the columns and data */}
       </ThemeProvider>
     </div>
   );
 };
 
-export default Appointments;
+export default Appointments; // Exporting the component 

@@ -162,4 +162,4 @@ const HospitalTable = () => {
   );
 };
 
-export default HospitalTable; // Exporting the HospitalTable component as default
+export default HospitalTable; // Exporting the HospitalTable component as a default

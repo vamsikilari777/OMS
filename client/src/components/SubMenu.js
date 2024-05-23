@@ -39,4 +39,4 @@ export const SubMenu = ({ item, activeItem, handleClick }) => {
   );
 };
 
-export default SubMenu; // Exporting SubMenu component as default
+export default SubMenu; // Exporting SubMenu Component as default

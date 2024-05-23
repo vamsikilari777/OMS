@@ -45,4 +45,4 @@ function ReportsTable({ hospitals, handleShowModal }) {
   );
 }
 
-export default ReportsTable; // Exporting ReportsTable component as default
+export default ReportsTable; // Exporting ReportsTable Component as default

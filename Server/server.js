@@ -8,11 +8,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Configure CORS
-app.use(cors({
-  origin: ['http://localhost:3000', 'https://testing-livid-pi.vercel.app'],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'https://testing-livid-pi.vercel.app'],
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+// }));
+app.use(cors());   
 app.use(express.json());
 
 // Use routes

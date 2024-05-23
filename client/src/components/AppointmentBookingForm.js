@@ -200,7 +200,7 @@ function AppointmentBookingModal() {
               <br />
             </Col>
           </Row>
-          {/* Row for the submit and reset buttons */}
+          {/* Row for the submit and reset button */}
           <Row className="justify-content-end mt-3">
             <Col xs="auto">
               <Button variant="primary" type="submit"> {/* Submit button */}

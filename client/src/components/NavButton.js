@@ -21,7 +21,7 @@ export const NavButton = ({ onClick, name, icon, isActive, hasSubNav }) => {
   // Render the NavButton component
   return (
     <button
-      type="button" // Button type
+      type="button" // Type of a button
       onClick={handleClick} // onClick event handler
       className={isActive ? "active" : ""} // Apply 'active' class if isActive is true
     >

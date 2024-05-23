@@ -12,7 +12,7 @@ import CloseIcon from "@mui/icons-material/Close"; // Importing CloseIcon compon
  * @returns {JSX.Element} - Returns the JSX for the Popup component
  */
 function Popup({ message, onClose }) {
-  const [isOpen, setIsOpen] = useState(true); // State to manage whether the popup is open or closed
+  const [isOpen, setIsOpen] = useState(true); // State to manage whether the Popup is open or closed
 
   // Function to close the popup
   const closePopup = () => {

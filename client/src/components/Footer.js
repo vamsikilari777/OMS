@@ -11,7 +11,7 @@ const Footer = () => {
         {/* Footer section */}
         <footer className="footer">
           <div className="container"> {/* Container for responsive layout */}
-            <div className="row"> {/* Row for organizing columns */}
+            <div className="row"> {/* Row for organizing column */}
               {/* Column 1: Company Information */}
               <div className="col-md-4 col-sm-6">
                 <h3>TechRovar</h3>

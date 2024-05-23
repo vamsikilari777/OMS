@@ -13,7 +13,7 @@ const UserTable = () => {
       const response = await fetch(
         `${baseURL}/admin/allUsers?page=${currentPage}`
       ); // Fetch user data from the server
-      const data = await response.json(); // Extract JSON data from the response
+      const data = await response.json(); // Extract JSON data from the Response
       console.log("Fetched data:", data);
 
       const userData = [...data]; // Copy the fetched data array using spread operator

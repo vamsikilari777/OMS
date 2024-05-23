@@ -7,7 +7,7 @@ import ProfileModal from "../modals/ProfileModal"; // Importing ProfileModal com
 
 /**
  * NavHeader Component
- * @param {function} handleToggle - Function to handle sidebar toggle
+ * @param {function} handleToggle - Function to handle Sidebar toggle
  * @param {boolean} isSidebarOpen - Flag indicating if the sidebar is open
  * @param {object} user - User object containing user information
  * @returns {JSX.Element} - Returns the JSX for the NavHeader component

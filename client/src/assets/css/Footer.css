@@ -4,12 +4,30 @@ body {
 }
 
 .footer {
-  background-color: #333;
+  background-color: #565555;
   color: #fff;
   padding: 20px 0;
 }
 
 .copyright-part {
-  padding-top: 10px;
+  padding-top: 12px;
   text-align: center;
+ 
+}
+/* Footer.css */
+.icon-text {
+  margin-left: 10px; /* Adjust the margin to your preference */
+}
+.line{
+  list-style: none;
+  margin-right: 10px;
+}
+.contact-list{
+  margin: 0px;
+  padding: 0px;
+}
+.Number{
+  font-family:montserrat;
+  font-size: 16px;
+  font-weight: 100px;
 }

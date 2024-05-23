@@ -26,11 +26,11 @@ function Home() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
+         <div
             className="collapse navbar-collapse justify-content-end"
             id="navbarNav"
           >
-            <ul className="navbar-nav">
+            {/* <ul className="navbar-nav">
               <li className="nav-item">
                 <a className="nav-link me-4" href="#">
                   Home
@@ -51,7 +51,7 @@ function Home() {
                   Contact Us
                 </a>
               </li>
-            </ul>
+            </ul> */}
             <div className="d-flex">
               <Button
                 variant="secondary"

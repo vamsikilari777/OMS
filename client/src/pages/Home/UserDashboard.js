@@ -5,27 +5,39 @@ import NavButton from "../../components/NavButton";
 import NavHeader from "../../components/NavHeader";
 import SubMenu from "../../components/SubMenu";
 import UserMenuItems from "../../utils/UserMenuItems";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const UserDashboard = () => {
   const [activeItem, setActiveItem] = useState(UserMenuItems[0]?.name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const isMobile = window.innerWidth <= 768;
+  // const isMobile = window.innerWidth <= 768;
 
   const location = useLocation();
   const user = location.state?.user; // Access user data passed via route state
+
+  // Use useMediaQuery hook to detect mobile devices
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
+  const handleClick = (item, isMainNav) => {
+    console.log("Handle click:", item);
+    setActiveItem(item);
+    if (isMobile) {
+      setIsSidebarOpen(false); // Close sidebar when clicking any menu button on mobile
+    }
+  };
 
   const handleToggle = () => {
     setIsSidebarOpen(!isSidebarOpen);
     console.log("Toggling sidebar", isSidebarOpen ? "Closed" : "Opened");
   };
 
-  const handleClick = (item, isMainNav) => {
-    console.log("Handle click:", item);
-    setActiveItem(item !== activeItem ? item : ""); // Toggle active item
-    if (isMainNav && isMobile) {
-      setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
-    }
-  };
+  // const handleClick = (item, isMainNav) => {
+  //   console.log("Handle click:", item);
+  //   setActiveItem(item !== activeItem ? item : ""); // Toggle active item
+  //   if (isMainNav && isMobile) {
+  //     setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
+  //   }
+  // };
 
   const handleSubItemClick = () => {
     if (isMobile) {

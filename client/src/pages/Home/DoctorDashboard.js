@@ -5,10 +5,27 @@ import NavButton from "../../components/NavButton";
 import NavHeader from "../../components/NavHeader";
 import SubMenu from "../../components/SubMenu";
 import DoctorItems from "../../utils/DoctorItems";
+import { useMediaQuery } from "@react-hook/media-query";
 
 // Doctor dashboard component
 const DoctorDashboard = () => {
   const [activeItem, setActiveItem] = useState(DoctorItems[0]?.name);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const location = useLocation();
+  const user = location.state?.user; // Access user data passed via route state
+
+   // Use useMediaQuery hook to detect mobile devices
+   const isMobile = useMediaQuery("(max-width: 768px)");
+
+   const handleClick = (item, isMainNav) => {
+     console.log("Handle click:", item);
+     setActiveItem(item);
+     if (isMobile) {
+       setIsSidebarOpen(false); // Close sidebar when clicking any menu button on mobile
+     }
+   };
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const location = useLocation();
   const user = location.state?.user; // Access user data passed via route state
@@ -32,12 +49,16 @@ const DoctorDashboard = () => {
     };
   }, []);
 
+
   const handleToggle = () => {
     if (window.innerWidth > 768) return; // Prevent toggling on desktop view
     setIsSidebarOpen(!isSidebarOpen);
     console.log("Toggling sidebar", isSidebarOpen ? "Closed" : "Opened");
   };
-
+  const handleSubItemClick = () => {
+    if (isMobile) {
+      setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
+    } 
   const handleClick = (item, isMainNav) => {
     console.log("Handle click:", item);
     setActiveItem(item !== activeItem ? item : ""); // Toggle active item

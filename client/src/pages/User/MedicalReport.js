@@ -69,117 +69,126 @@ function MedicalReportForm() {
       <div className="form-sub-div">
         <h2>Medical Report Form</h2>
         <form onSubmit={handleSubmit} className="medical-report-form">
-          <div className="form-group">
-            <label htmlFor="patientName">Patient Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <div className="d-flex column-gap-5">
+            <div>
+              <div className="form-group">
+                <label htmlFor="patientName">Patient Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  
+                  required
+                />
+              </div>
 
-          <div className="form-group">
-            <label htmlFor="age">Age:</label>
-            <input
-              type="number"
-              id="age"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <div className="form-group">
+                <label htmlFor="age">Age:</label>
+                <input  
+                  type="number"
+                  id="age"
+                  name="age"
+                  placeholder="Enter Age"
+                  
+                  value={formData.age}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-          <div className="form-group">
-            <label htmlFor="gender">Gender:</label>
-            <br></br>
-            <select
-              className="select-one"
-              type="select-one"
-              id="gender"
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="hospital_id">Hospital ID:</label> <br></br>
-            <select
-              className="select-one"
-              type="select-one"
-              id="hospital_id"
-              name="hospital_id"
-              value={formData.hospital_id}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Hospital ID</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </div>
+              <div className="form-group">
+                <label htmlFor="gender">Gender:</label>
+                <br></br>
+                <select
+                  className="select-one"
+                  type="select-one"
+                  id="gender"
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" >Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="hospital_id">Hospital ID:</label> <br></br>
+                <select
+                  className="select-one"
+                  type="select-one"
+                  id="hospital_id"
+                  name="hospital_id"
+                  value={formData.hospital_id}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Hospital ID</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div className="form-group">
+                <label htmlFor="doctor_id">Doctor ID:</label> <br></br>
+                <select
+                  className="select-one"
+                  type="select-one"
+                  id="doctor_id"
+                  name="doctor_id"
+                  value={formData.doctor_id}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Doctor ID</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
 
-          <div className="form-group">
-            <label htmlFor="doctor_id">Doctor ID:</label> <br></br>
-            <select
-              className="select-one"
-              type="select-one"
-              id="doctor_id"
-              name="doctor_id"
-              value={formData.doctor_id}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Doctor ID</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
+              <div className="form-group">
+                <label htmlFor="diseases">Disease:</label> <br></br>
+                <select
+                  className="select-one"
+                  type="select-one"
+                  id="diseases"
+                  name="diseases"
+                  value={formData.diseases}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Disease</option>
+                  <option value="flu">Flu</option>
+                  <option value="cold">Cold</option>
+                  <option value="fever">Fever</option>
+                  <option value="headache">Headache</option>
+                </select>
+              </div>
 
-          <div className="form-group">
-            <label htmlFor="diseases">Disease:</label> <br></br>
-            <select
-              className="select-one"
-              type="select-one"
-              id="diseases"
-              name="diseases"
-              value={formData.diseases}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Disease</option>
-              <option value="flu">Flu</option>
-              <option value="cold">Cold</option>
-              <option value="fever">Fever</option>
-              <option value="headache">Headache</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="reports">PDF File:</label>
-            <input
-              type="file"
-              id="reports"
-              name="reports"
-              accept=".pdf"
-              // value={formData.reports}
-              onChange={handleChange}
-              required
-            />
+              <div className="form-group">
+                <label htmlFor="reports">PDF File:</label>
+                <input
+                  type="file"
+                  id="reports"
+                  name="reports"
+                  accept=".pdf"
+                  // value={formData.reports}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
           </div>
 
           <button type="submit" className="submit-button">

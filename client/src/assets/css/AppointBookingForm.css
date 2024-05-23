@@ -6,7 +6,7 @@
 }
 .form-main {
   box-shadow: 20px;
-  padding: 30px 30px 30px 30px;
+  padding: 30px;
   margin: 30px;
   background-color: #1d212a;
 }
@@ -25,4 +25,11 @@
 .button {
   background-color: #5b5b5b;
   border: none !important;
+}
+
+
+
+
+.white-field{
+  background-color:white  !important;
 }

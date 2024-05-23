@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/css/MainPage.css";
 import { useLocation } from "react-router-dom";
 import NavButton from "../../components/NavButton";
@@ -16,6 +16,13 @@ const Sidebar = () => {
 
   // Use useMediaQuery hook to detect mobile devices
   const isMobile = useMediaQuery("(max-width: 768px)");
+
+    // Effect hook to close sidebar when mobile device is detected
+    useEffect(() => {
+      if (isMobile) {
+        setIsSidebarOpen(false);
+      }
+    }, [isMobile]);
 
   const handleClick = (item, isMainNav) => {
     console.log("Handle click:", item);
@@ -98,7 +105,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-
-
-

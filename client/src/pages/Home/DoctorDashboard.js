@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/css/MainPage.css";
 import { useLocation } from "react-router-dom";
 import NavButton from "../../components/NavButton";
@@ -14,27 +14,33 @@ const DoctorDashboard = () => {
   const location = useLocation();
   const user = location.state?.user; // Access user data passed via route state
 
-   // Use useMediaQuery hook to detect mobile devices
-   const isMobile = useMediaQuery("(max-width: 768px)");
+  // Use useMediaQuery hook to detect mobile devices
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
-   const handleClick = (item, isMainNav) => {
-     console.log("Handle click:", item);
-     setActiveItem(item);
-     if (isMobile) {
-       setIsSidebarOpen(false); // Close sidebar when clicking any menu button on mobile
-     }
-   };
+   // Effect hook to close sidebar when mobile device is detected
+   useEffect(() => {
+    if (isMobile) {
+      setIsSidebarOpen(false);
+    }
+  }, [isMobile]);
+
+  const handleClick = (item, isMainNav) => {
+    console.log("Handle click:", item);
+    setActiveItem(item);
+    if (isMobile) {
+      setIsSidebarOpen(false); // Close sidebar when clicking any menu button on mobile
+    }
+  };
 
   const handleToggle = () => {
     setIsSidebarOpen(!isSidebarOpen);
     console.log("Toggling sidebar", isSidebarOpen ? "Closed" : "Opened");
   };
 
-
   const handleSubItemClick = () => {
     if (isMobile) {
       setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
-    } 
+    }
   };
 
   return (
@@ -95,3 +101,6 @@ const DoctorDashboard = () => {
 };
 
 export default DoctorDashboard;
+
+
+

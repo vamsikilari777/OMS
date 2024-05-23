@@ -10,7 +10,6 @@ import { useMediaQuery } from "@react-hook/media-query";
 const DoctorDashboard = () => {
   const [activeItem, setActiveItem] = useState(DoctorItems[0]?.name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  // const isMobile = window.innerWidth <= 768;
 
   const location = useLocation();
   const user = location.state?.user; // Access user data passed via route state
@@ -31,18 +30,11 @@ const DoctorDashboard = () => {
     console.log("Toggling sidebar", isSidebarOpen ? "Closed" : "Opened");
   };
 
-  // const handleClick = (item, isMainNav) => {
-  //   console.log("Handle click:", item);
-  //   setActiveItem(item !== activeItem ? item : ""); // Toggle active item
-  //   if (isMainNav && isMobile) {
-  //     setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
-  //   }
-  // };
 
   const handleSubItemClick = () => {
     if (isMobile) {
       setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
-    } // Close sidebar when a subnav item is clicked
+    } 
   };
 
   return (

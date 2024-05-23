@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/css/MainPage.css";
 import { useLocation } from "react-router-dom";
 import NavButton from "../../components/NavButton";
@@ -7,6 +7,7 @@ import SubMenu from "../../components/SubMenu";
 import DoctorItems from "../../utils/DoctorItems";
 import { useMediaQuery } from "@react-hook/media-query";
 
+// Doctor dashboard component
 const DoctorDashboard = () => {
   const [activeItem, setActiveItem] = useState(DoctorItems[0]?.name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -25,16 +26,51 @@ const DoctorDashboard = () => {
      }
    };
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
+  const location = useLocation();
+  const user = location.state?.user; // Access user data passed via route state
+
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
+    } else {
+      setIsSidebarOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    handleResize(); // Set initial state based on the current window width
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
   const handleToggle = () => {
+    if (window.innerWidth > 768) return; // Prevent toggling on desktop view
     setIsSidebarOpen(!isSidebarOpen);
     console.log("Toggling sidebar", isSidebarOpen ? "Closed" : "Opened");
   };
-
-
   const handleSubItemClick = () => {
     if (isMobile) {
       setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
     } 
+  const handleClick = (item, isMainNav) => {
+    console.log("Handle click:", item);
+    setActiveItem(item !== activeItem ? item : ""); // Toggle active item
+    if (isMainNav && window.innerWidth <= 768) {
+      setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
+    }
+  };
+
+  const handleSubItemClick = () => {
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false); // Close sidebar when a subnav item is clicked
+    }
   };
 
   return (
@@ -70,11 +106,7 @@ const DoctorDashboard = () => {
               </div>
             ))}
           </aside>
-          <div
-            className={`content ${
-              isSidebarOpen ? "shift-right" : "shift-left"
-            }`}
-          >
+          <div className={`content ${isSidebarOpen ? "shift-right" : "shift-left"}`}>
             <div className="main-content">
               <div className="content-wrapper">
                 {DoctorItems.map(

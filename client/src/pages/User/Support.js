@@ -24,12 +24,13 @@ function MainContent() {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter name" />
+                <Form.Control type="text" placeholder="Enter name" style={{ backgroundColor: 'white' }} />
+
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Mobile Number</Form.Label>
-                <Form.Control type="number" placeholder="Enter Mobile Number" />
+                <Form.Control type="number" placeholder="Enter Mobile Number" style={{ backgroundColor: 'white' }} />
               </Form.Group>
               <Form.Group
                 className="mb-3"

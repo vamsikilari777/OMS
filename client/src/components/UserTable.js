@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
+import baseURL from "../config";
 
 const UserTable = () => {
   const [accounts, setAccounts] = useState([]);

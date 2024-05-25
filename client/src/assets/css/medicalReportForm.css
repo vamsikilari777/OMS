@@ -1,3 +1,4 @@
+/* Base Styles */
 .medical-report-form-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -7,18 +8,19 @@
   background-color: #1d212a;
   box-shadow: 0px 4px 8px rgb(108, 107, 107);
   color: white;
-  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .form-sub-div {
-  width: 550px;
-  border: #5b5b5b;
+  width: 100%;
+  max-width: 550px;
+  border: 1px solid #5b5b5b;
   border-radius: 9px;
-  box-shadow: #5b5b5b 0px 4px 8px;
+  box-shadow: 0px 4px 8px #5b5b5b;
   padding: 20px;
+  background-color: #1d212a;
 }
 
 .medical-report-form {
@@ -32,30 +34,32 @@
 
 input[type="text"],
 input[type="number"],
-input[type="select-one"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
+input[type="select-one"],
+input[type="file"],
 .select-one {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  /* background-color: #2a2e38;
+  color: white; */
 }
+
+/* input[type="text"]::placeholder,
+input[type="number"]::placeholder
+{
+  color:white;
+} */
 
 .submit-button {
   padding: 10px 20px;
   background-color: #007bff;
-  color: #5b5b5b;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-align: center;
-  color: white;
 }
 
 .submit-button:hover {
@@ -64,4 +68,103 @@ input[type="select-one"] {
 
 h2 {
   text-align: center;
+  font-size: 24px;
+}
+
+
+/* Medium screens (tablets) */
+@media only screen and (max-width: 768px) {
+  .medical-report-form-container {
+    padding: 15px;
+    margin:30px;
+    border-radius:10px;
+  }
+
+  .form-sub-div {
+    padding: 15px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="select-one"],
+  input[type="file"],
+  .select-one {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .submit-button {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+/* Small screens (mobile devices) */
+@media only screen and (max-width: 600px) {
+  .medical-report-form-container {
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .form-sub-div {
+    width: 100%;
+    padding: 10px;
+    box-shadow: none;
+    border: none;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="select-one"],
+  input[type="file"],
+  .select-one {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .submit-button {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}
+
+/* Extra small screens (small mobile devices) */
+@media only screen and (max-width: 480px) {
+  .medical-report-form-container {
+    padding: 8px;
+  }
+
+  .form-sub-div {
+    padding: 8px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="select-one"],
+  input[type="file"],
+  .select-one {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .submit-button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
 }

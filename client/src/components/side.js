@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../assets/css/MainPage.css";
 import { useLocation } from "react-router-dom";
 import NavButton from "../../components/NavButton";
 import NavHeader from "../../components/NavHeader";
 import SubMenu from "../../components/SubMenu";
-import DoctorItems from "../../utils/DoctorItems";
+import menuItems from "../../utils/SuperAdminItems";
 import { useMediaQuery } from "@react-hook/media-query";
 
-// Doctor dashboard component
-const DoctorDashboard = () => {
-  const [activeItem, setActiveItem] = useState(DoctorItems[0]?.name);
+const Sidebar = () => {
+  const [activeItem, setActiveItem] = useState(menuItems[0]?.name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const location = useLocation();
@@ -18,32 +17,23 @@ const DoctorDashboard = () => {
   // Use useMediaQuery hook to detect mobile devices
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-   // Effect hook to close sidebar when mobile device is detected
-   useEffect(() => {
+  const handleClick = (item, isMainNav) => {
+    console.log("Handle click:", item);
+    setActiveItem(item);
     if (isMobile) {
-      setIsSidebarOpen(false);
+      setIsSidebarOpen(false); // Close sidebar when clicking any menu button on mobile
     }
-  }, [isMobile]);
-
-   const handleClick = (item, isMainNav) => {
-     console.log("Handle click:", item);
-     setActiveItem(item);
-     if (isMobile) {
-       setIsSidebarOpen(false); // Close sidebar when clicking any menu button on mobile
-     }
-   };
+  };
 
   const handleToggle = () => {
-    if (window.innerWidth > 768) return; // Prevent toggling on desktop view
     setIsSidebarOpen(!isSidebarOpen);
     console.log("Toggling sidebar", isSidebarOpen ? "Closed" : "Opened");
   };
 
-
   const handleSubItemClick = () => {
     if (isMobile) {
       setIsSidebarOpen(false); // Close sidebar when a main nav button is clicked on mobile
-    } 
+    }
   };
 
   return (
@@ -57,7 +47,7 @@ const DoctorDashboard = () => {
         />
         <div className="pos d-flex">
           <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-            {DoctorItems.map((item) => (
+            {menuItems.map((item) => (
               <div key={item.name}>
                 <NavButton
                   onClick={() => handleClick(item.name, !item.items)}
@@ -79,18 +69,26 @@ const DoctorDashboard = () => {
               </div>
             ))}
           </aside>
-          <div className={`content ${isSidebarOpen ? "shift-right" : "shift-left"}`}>
+          <div
+            className={`content ${
+              isSidebarOpen ? "shift-right" : "shift-left"
+            }`}
+          >
             <div className="main-content">
-              <div className="content-wrapper">
-                {DoctorItems.map(
-                  (item) =>
-                    activeItem === item.name && (
-                      <div key={item.path}>
-                        <div className="pt-2">{item.path}</div>
+              {menuItems.map(
+                (item) =>
+                  activeItem === item.name && (
+                    <div key={item.path}>
+                      {/* Render content for the active item here */}
+                      {/* <h2>{item.name} </h2> */}
+                      {/* Render the icon */}
+                      <div className="pt-2">
+                        {/* Render the content */}
+                        {item.path}
                       </div>
-                    )
-                )}
-              </div>
+                    </div>
+                  )
+              )}
             </div>
           </div>
         </div>
@@ -99,7 +97,4 @@ const DoctorDashboard = () => {
   );
 };
 
-export default DoctorDashboard;
-
-
-
+export default Sidebar;

@@ -183,3 +183,24 @@ button {
     transform: translateX(0);
   }
 }
+
+ /*devices (phones) */
+@media only screen and (max-width: 575.98px) {
+.sidebar.open{
+/* Position the sidebar */
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 250px; /* Adjust width as needed */
+background-color: #1d212a; /* Sidebar background color */
+z-index: 1000; /* Ensure the sidebar is above other content */
+overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+  .sidebar-header {
+    position: fixed;
+    z-index: 1000;
+    top:0
+  }
+
+}

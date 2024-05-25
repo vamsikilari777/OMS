@@ -37,20 +37,30 @@ const Footer = () => {
               <div className="col-md-4 col-sm-6">
                 <h3>Contact Info</h3>
                 <ul className="contact-list">
-                  <li>
+                  <li className="line">
+                 
                     <p>
+<<<<<<< HEAD
                       <i className="fa fa-home home" id="ad"></i>
                       Plot no:82, Apollo Pharmacy Building. 2nd Floor,
                       Venkatadri Nagar, Joharapuram road, Nandyal Checkpost,
                       Kurnool-518002, Andhra Pradesh.
+=======
+                    <i className="fa fa-home" id="ad"></i>
+                     <span className="icon-text"> Plot no :<span className="Number"> 82</span>, Apollo Pharmacy Building. 2nd Floor,
+                      Venkatadri Nagar, Joharapuram road,Nandyal Checkpost,
+                      <br/> Kurnool-<span className="Number">518002</span>, Andhra Pradesh.</span>
+>>>>>>> c7a0ea388c4f3672638964925fcb34629fd26740
                     </p>
-                    <p>
+                    <p className="Number">
                       <i className="fa fa-phone"></i>
-                      +91 8019357139
+                      {/* +91 8019357139 */}
+                      <span className="icon-text">+91 8019357139</span>
                     </p>
                     <p>
                       <i className="fa fa-envelope-o"></i>
-                      info@techrovar.org
+                      <span className="icon-text">info@techrovar.org</span>
+                      
                     </p>
                   </li>
                 </ul>

@@ -1,8 +1,14 @@
 // Importing necessary modules and components from React and React Bootstrap
 import React, { useState } from "react";
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
+<<<<<<< HEAD
 import "../assets/css/AppointBookingForm.css"; // Importing custom CSS for the form
 import baseURL from "../config"; // Importing the base URL from the configuration file
+=======
+
+import "../assets/css/AppointBookingForm.css";
+import baseURL from "../config";
+>>>>>>> c7a0ea388c4f3672638964925fcb34629fd26740
 
 // Functional component for the appointment booking modal
 function AppointmentBookingModal() {
@@ -85,51 +91,66 @@ function AppointmentBookingModal() {
             <h3 className="heading-2">Appointment Details</h3> {/* Form heading */}
           </div>
         </div>
+<<<<<<< HEAD
         <Form onSubmit={handleSubmit}> {/* Form component with submission handler */}
           {/* Form fields */}
           <Row>
             <Col> {/* Column for the first set of form fields */}
               <Form.Control
+=======
+        <Form onSubmit={handleSubmit}>
+          <Row>
+            <Col>
+              <Form.Control 
+>>>>>>> c7a0ea388c4f3672638964925fcb34629fd26740
                 name="first_name"
                 placeholder="First name"
-                required // Added required attribute for mandatory fields
+                required
                 value={formData.first_name}
+<<<<<<< HEAD
                 onChange={handleChange} // Change handler
+=======
+                onChange={handleChange}
+                
+>>>>>>> c7a0ea388c4f3672638964925fcb34629fd26740
               />
               <br />
               <Form.Control
                 name="age"
-                type="number" // Change type to "number" for age
+                type="number"
                 placeholder="Age"
+                className="white-field"
                 value={formData.age}
                 onChange={handleChange}
+                
               />
               <br />
               <Form.Control
                 name="mobile_no"
-                type="tel" // Change type to "tel" for phone number
+                type="tel"
                 placeholder="Phone Number"
-                pattern="[0-9]{10}" // Added pattern for 10-digit phone number
+                pattern="[0-9]{10}"
                 value={formData.mobile_no}
                 onChange={handleChange}
+                
               />
               <br />
               <Form.Control
                 type="date"
                 name="date_of_appointment"
-                placeholderText="Appointment Date"
                 required
                 value={formData.date_of_appointment}
                 onChange={handleChange}
+                
               />
               <br />
               <Form.Control
                 type="time"
                 name="time_of_appointment"
-                placeholderText="Appointment time"
                 required
                 value={formData.time_of_appointment}
                 onChange={handleChange}
+                
               />
               <br />
               <Form.Select
@@ -137,6 +158,7 @@ function AppointmentBookingModal() {
                 required
                 value={formData.hospital_name}
                 onChange={handleChange}
+                
               >
                 <option value="" disabled selected>
                   Select Hospital
@@ -156,6 +178,7 @@ function AppointmentBookingModal() {
                 required
                 value={formData.last_name}
                 onChange={handleChange}
+                
               />
               <br />
               <Form.Select
@@ -163,6 +186,7 @@ function AppointmentBookingModal() {
                 required
                 value={formData.gender}
                 onChange={handleChange}
+                
               >
                 <option value="">Select Gender</option>
                 <option>Male</option>
@@ -175,9 +199,10 @@ function AppointmentBookingModal() {
                 required
                 value={formData.appointment_type}
                 onChange={handleChange}
+                
               >
                 <option value="">Select Booking Type</option>
-                <option>emergency appointment </option>
+                <option>emergency appointment</option>
                 <option>basic appointment</option>
               </Form.Select>
               <br />
@@ -187,15 +212,17 @@ function AppointmentBookingModal() {
                 required
                 value={formData.address}
                 onChange={handleChange}
+                
               />
               <br />
               <Form.Control
                 name="email"
-                type="email" // Change type to "email" for email field
+                type="email"
                 placeholder="Email"
                 required
                 value={formData.email}
                 onChange={handleChange}
+                
               />
               <br />
             </Col>

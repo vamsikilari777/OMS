@@ -16,10 +16,18 @@ function ReportsTable({ hospitals, handleShowModal }) {
       <Table striped bordered hover>
         <thead>
           <tr>
+<<<<<<< HEAD
             <th>ID</th> {/* Header for hospital ID */}
             <th>Hospital Name</th> {/* Header for hospital name */}
             <th>Location</th> {/* Header for hospital location */}
             <th>Reports</th> {/* Header for hospital reports */}
+=======
+            {/* This is an Table Header */}
+            <th>ID</th>
+            <th>Hospital Name</th>
+            <th>Location</th>
+            <th>Reports</th>
+>>>>>>> c7a0ea388c4f3672638964925fcb34629fd26740
           </tr>
         </thead>
         <tbody>

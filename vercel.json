@@ -1,0 +1,8 @@
+{
+    "rewrites":[
+        {
+            "source": "/medimonitorx/:path",
+            "destination": "/:path*"
+        }
+    ]
+}

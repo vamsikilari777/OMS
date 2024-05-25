@@ -1,6 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react"; // Import React and necessary hooks
 import { Table, Button } from "react-bootstrap"; // Import Table and Button components from react-bootstrap
+=======
+import React, { useState, useEffect } from "react";
+import { Table, Button } from "react-bootstrap";
+import baseURL from "../config";
+>>>>>>> c7a0ea388c4f3672638964925fcb34629fd26740
 
 const UserTable = () => {
   const [accounts, setAccounts] = useState([]); // State to store user accounts

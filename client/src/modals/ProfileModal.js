@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
-import "../assets/css/RegisterModal.css";
-import baseURL from "../config";
+import React, { useState, useEffect } from "react"; // Import React and hooks from react
+import { Modal, Button, Form } from "react-bootstrap"; // Import Modal, Button, and Form components from react-bootstrap
+import "../assets/css/RegisterModal.css"; // Import custom CSS for the modal
+import baseURL from "../config"; // Import the baseURL configuration
 
+// Define the functional component named ProfileModal
 const ProfileModal = ({ show, onHide, user }) => {
+  // Define state for hospital details with useState hook
   const [hospital, setHospital] = useState({
     username: "",
     email: "",
     password: "",
     confirm_password: "",
-    mobile: "", // Add id field to state
+    mobile: "", // Initialize mobile field
   });
 
+  // useEffect hook to update the hospital state when the user prop changes
   useEffect(() => {
     if (user) {
       setHospital({
@@ -24,12 +27,15 @@ const ProfileModal = ({ show, onHide, user }) => {
     }
   }, [user]);
 
+  // Function to handle input changes and update the hospital state
   const handleChange = (e) => {
     setHospital({ ...hospital, [e.target.name]: e.target.value });
   };
 
+  // Function to handle the update request
   const handleUpdate = async (id) => {
     try {
+      // Send a PUT request to update the user data
       const response = await fetch(`${baseURL}/admin/users/${id}`, {
         method: "PUT",
         headers: {
@@ -44,19 +50,29 @@ const ProfileModal = ({ show, onHide, user }) => {
         }),
       });
       if (response.ok) {
+        // Close the modal on successful update
         onHide();
         console.log("Successfully updated data");
       } else {
+        // Log an error message if the update fails
         console.error("Failed to update data:", response.statusText);
       }
     } catch (error) {
+      // Log an error message if the request fails
       console.error("Error updating data:", error);
     }
   };
 
+  // Return the Modal component with a form to update profile details
   return (
     <Modal show={show} onHide={onHide} centered>
-      <Form onSubmit={(e) => handleUpdate(user.id)}>
+      {/* Form to handle user profile updates, on submit call handleUpdate */}
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault(); // Prevent default form submission
+          handleUpdate(user.id); // Call handleUpdate with user id
+        }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Update Profile</Modal.Title>
         </Modal.Header>
@@ -88,7 +104,7 @@ const ProfileModal = ({ show, onHide, user }) => {
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Email"
+              placeholder="Enter Password"
               name="password"
               value={hospital.password}
               onChange={handleChange}
@@ -119,9 +135,11 @@ const ProfileModal = ({ show, onHide, user }) => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
+          {/* Button to close the modal */}
           <Button variant="secondary" onClick={onHide}>
             Close
           </Button>
+          {/* Button to submit the form and update the profile */}
           <Button type="submit" variant="primary">
             Update
           </Button>
@@ -131,4 +149,5 @@ const ProfileModal = ({ show, onHide, user }) => {
   );
 };
 
+// Export the ProfileModal component as the default export
 export default ProfileModal;

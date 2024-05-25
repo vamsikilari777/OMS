@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 5000;
 //   credentials: true,
 // }));
 app.use(cors());   
+
 app.use(express.json());
 
 // Use routes

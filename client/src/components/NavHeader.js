@@ -58,7 +58,7 @@ export const NavHeader = ({
             <span style={{ color: "blue" }}>X</span>
           </h2>
         </Form>
-        <div className="d-flex">
+        <div className="e_con d-flex">
           <button
             onClick={handleProfileClick}
             className="btn btn-link text-decoration-none text-light"

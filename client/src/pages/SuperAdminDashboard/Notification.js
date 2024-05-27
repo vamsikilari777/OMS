@@ -37,7 +37,7 @@ class App extends React.Component {
       <Card className="bg-dark text-light">
         <Card.Header>Notification Pannel</Card.Header>
         <Card.Body className="bg-secondary rounded-2">
-          <Card.Title>
+          <Card.Title className="ctitle">
             This Notification Mannaged by Higher Authorities
           </Card.Title>
           <Card.Text>

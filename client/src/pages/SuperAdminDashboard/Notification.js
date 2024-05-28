@@ -4,7 +4,6 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "../../assets/css/notification.css";
 import baseURL from "../../config";
-import { Container } from "react-bootstrap";
 class App extends React.Component {
   state = {
     notifications: [],
@@ -33,11 +32,25 @@ class App extends React.Component {
   render() {
     const { message } = this.state;
     return (
-      <Container className="note d-flex justify-content-center align-items-center">
+      // <div>
+      //   <input
+      //     className="message-input"
+      //     type="text"
+      //     value={message}
+      //     onChange={this.handleInputChange}
+      //     placeholder="Enter message"
+      //   />
+      //   <button
+      //     className="mt-2 send-notification-button"
+      //     onClick={this.handleSendNotification}
+      //   >
+      //     Send Notification
+      //   </button>
+      // </div>
       <Card className="bg-dark text-light">
         <Card.Header>Notification Pannel</Card.Header>
-        <Card.Body className="bg-secondary rounded-2">
-          <Card.Title className="ctitle">
+        <Card.Body className="bg-secondary">
+          <Card.Title>
             This Notification Mannaged by Higher Authorities
           </Card.Title>
           <Card.Text>
@@ -63,7 +76,6 @@ class App extends React.Component {
           </Button>
         </Card.Body>
       </Card>
-      </Container>
     );
   }
 }

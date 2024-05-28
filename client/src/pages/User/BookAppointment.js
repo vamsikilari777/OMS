@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import "../../assets/css/AppointBookingForm.css";
 import baseURL from "../../config";
 
 function AppointmentBooking() {
-  const initialFormData = {
+  const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
     age: "",
@@ -15,9 +16,7 @@ function AppointmentBooking() {
     appointment_type: "",
     address: "",
     mobile_no: "",
-  };
-
-  const [formData, setFormData] = useState(initialFormData);
+  });
 
   const [formStatus, setFormStatus] = useState({
     submitted: false,
@@ -37,7 +36,19 @@ function AppointmentBooking() {
 
       if (response.ok) {
         console.log("Form data submitted successfully");
-        setFormData(initialFormData);
+        setFormData({
+          first_name: "",
+          last_name: "",
+          age: "",
+          gender: "",
+          email: "",
+          date_of_appointment: "",
+          time_of_appointment: "",
+          hospital_name: "",
+          appointment_type: "",
+          address: "",
+          mobile_no: "",
+        });
         setFormStatus({ submitted: true, error: "" });
       } else {
         // Handle non-200 HTTP response
@@ -49,11 +60,6 @@ function AppointmentBooking() {
     }
   };
 
-  const handleReset = () => {
-    setFormData(initialFormData);
-    setFormStatus({ submitted: false, error: "" });
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -63,157 +69,152 @@ function AppointmentBooking() {
   };
 
   return (
-    <div className="container mt-4">
-      <div className="card">
-        <div className="card-header">
-          <h3 className="card-title">Appointment Details</h3>
+    <div>
+      <Card className="Form form-main">
+        <div className="div-1 d-flex">
+          <div className="heading float-start">
+            <h3 className="heading-2">Appointment Details</h3>
+          </div>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="first_name"
-                  placeholder="First Name"
-                  className="form-control"
-                  value={formData.first_name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="last_name"
-                  placeholder="Last Name"
-                  className="form-control"
-                  value={formData.last_name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="number"
-                  name="age"
-                  placeholder="Age"
-                  className="form-control"
-                  value={formData.age}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="tel"
-                  name="mobile_no"
-                  placeholder="Phone Number"
-                  className="form-control"
-                  value={formData.mobile_no}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="date"
-                  name="date_of_appointment"
-                  placeholder="Appointment Date"
-                  className="form-control"
-                  value={formData.date_of_appointment}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="time"
-                  name="time_of_appointment"
-                  placeholder="Appointment Time"
-                  className="form-control"
-                  value={formData.time_of_appointment}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="hospital_name"
-                  placeholder="Hospital Name"
-                  className="form-control"
-                  value={formData.hospital_name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <select
-                  name="gender"
-                  className="form-select"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="" disabled className="option">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Others">Others</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <select
-                  name="appointment_type"
-                  className="form-select"
-                  value={formData.appointment_type}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="" disabled className="option">Select Appointment Type</option>
-                  <option value="Emergency Appointment">Emergency Appointment</option>
-                  <option value="Basic Appointment">Basic Appointment</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Address"
-                  className="form-control"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="form-control"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
-              <div className="form-group d-flex justify-content-end">
-                <button type="submit" className="btn btn-primary mr-2">Submit</button>
-                <button type="button" className="btn btn-danger" onClick={handleReset}>Reset</button>
-              </div>
-            </div>
-          </div>
-        </form>
+        <Form onSubmit={handleSubmit}>
+          <Row>
+            <Col>
+              <Form.Control
+                name="first_name"
+                placeholder="Full Name"
+                required // Added required attribute for mandatory fields
+                value={formData.first_name}
+                onChange={handleChange}
+              />
+              <br />
+              <Form.Control
+                name="age"
+                type="number" // Change type to "number" for age
+                placeholder="Age"
+                value={formData.age}
+                onChange={handleChange}
+              />
+              <br />
+              <Form.Control
+                name="mobile_no"
+                type="tel" // Change type to "tel" for phone number
+                placeholder="Phone Number"
+                // pattern="[0-9]{10}" // Added pattern for 10-digit phone number
+                value={formData.mobile_no}
+                onChange={handleChange}
+              />
+              <br />
+              <Form.Control
+                type="date"
+                name="date_of_appointment"
+                placeholderText="Appointment Date"
+                required
+                value={formData.date_of_appointment}
+                onChange={handleChange}
+              />
+              <br />
+              <Form.Control
+                type="time"
+                name="time_of_appointment"
+                placeholderText="Appointment time"
+                required
+                value={formData.time_of_appointment}
+                onChange={handleChange}
+              />
+              <br />
+              <Form.Select
+                name="hospital_name"
+                required
+                value={formData.hospital_name}
+                onChange={handleChange}
+              >
+                <option value="" disabled selected>
+                  Select Hospital
+                </option>
+                <option>Amma Hospital</option>
+                <option>Gouri Gopal Hospital</option>
+                <option>Suraksha Hospital</option>
+                <option>RR Reddy ENT Hospital</option>
+                <option>Dhurga Multi Speciality Hospital</option>
+              </Form.Select>
+              <br />
+            </Col>
+            <Col>
+              <Form.Select
+                name="last_name"
+                required
+                value={formData.last_name}
+                onChange={handleChange}
+              >
+                <option value="" disabled selected>
+                  Select Doctor
+                </option>
+                <option>Hussain</option>
+                <option>Vamsi</option>
+                <option>Harish</option>
+                <option>Sharvan</option>
+                <option>John</option>
+              </Form.Select>
+              <br />
+              <Form.Select
+                name="gender"
+                required
+                value={formData.gender}
+                onChange={handleChange}
+              >
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Others</option>
+              </Form.Select>
+              <br />
+              <Form.Select
+                name="appointment_type"
+                required
+                value={formData.appointment_type}
+                onChange={handleChange}
+              >
+                <option value="">Select Booking Type</option>
+                <option>emergency appointment </option>
+                <option>basic appointment</option>
+              </Form.Select>
+              <br />
+              <Form.Control
+                name="address"
+                placeholder="Address"
+                required
+                value={formData.address}
+                onChange={handleChange}
+              />
+              <br />
+              <Form.Control
+                name="email"
+                type="email" // Change type to "email" for email field
+                placeholder="Email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <br />
+            </Col>
+          </Row>
+          <Row className="justify-content-end mt-3">
+            <Col xs="auto">
+              <Button className="button" type="submit">
+                Submit
+              </Button>
+            </Col>
+            <Col xs="auto">
+              <Button variant="danger" type="reset">
+                Reset
+              </Button>
+            </Col>
+          </Row>
+        </Form>
         {formStatus.error && (
           <div className="error-message">{formStatus.error}</div>
         )}
-      </div>
+      </Card>
     </div>
   );
 }

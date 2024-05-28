@@ -16,11 +16,3 @@
 .spy {
   margin-bottom: 120px;
 }
-
-/*devices (phones) */
-@media only screen and (max-width: 575.98px) {
-  .dot{
-    height: 100%;
-   
-  }
-}

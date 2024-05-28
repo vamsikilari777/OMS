@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import '../../assets/css/RegisterHospital.css';
 import { MaterialReactTable } from "material-react-table";
 import {
   Box,
@@ -163,7 +164,7 @@ const Hospital = () => {
   );
 
   return (
-    <>
+    <div className="f_table">
       <ThemeProvider theme={darkTheme}>
         <div>
           <MaterialReactTable
@@ -209,7 +210,7 @@ const Hospital = () => {
           />
         </div>
       </ThemeProvider>
-    </>
+    </div>
   );
 };
 

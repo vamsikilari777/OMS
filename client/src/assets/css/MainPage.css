@@ -74,13 +74,13 @@ button {
 }
 
 .sidebar-header {
-  display: flex;
+  /* display: flex; */
   position: fixed;
   height: 72px;
   border-bottom: 1px solid #2e303e;
   color: #586881;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   width: 100%;
   background-color: #1d212a;
 }
@@ -182,4 +182,31 @@ button {
   to {
     transform: translateX(0);
   }
+}
+
+ /*devices (phones) */
+@media only screen and (max-width: 575.98px) {
+.sidebar.open{
+/* Position the sidebar */
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+font-size: 12px;
+width: 250px; /* Adjust width as needed */
+height: 100vh;
+background-color: #1d212a; /* Sidebar background color */
+z-index: 1000; /* Ensure the sidebar is above other content */
+overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+  .sidebar-header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+  .e_con{
+    font-size: 14px;
+  }
+
 }

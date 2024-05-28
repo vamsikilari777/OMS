@@ -2,10 +2,11 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "../../assets/css/medicalReportForm.css"
 
-function MainContent() {
+function Support() {
   return (
-    <div className="vw-60 bg-secondary">
+    <div className="vw-60 pb-2 pt-2 ml-3 mr-3 rounded-4 bg-black">
       <div className="d-flex justify-content-center align-item-center vh-80">
         <Col md={9} className="mt-2 pt-4 pb-4 bg-dark text-light rounded-2 ">
           <Container>
@@ -24,13 +25,13 @@ function MainContent() {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter name" style={{ backgroundColor: 'white' }} />
+                <Form.Control type="text" placeholder="Enter name" className="suppor-placeholder-color"  />
 
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Mobile Number</Form.Label>
-                <Form.Control type="number" placeholder="Enter Mobile Number" style={{ backgroundColor: 'white' }} />
+                <Form.Control type="text" placeholder="Enter Mobile Number" className="suppor-placeholder-color"  />
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -57,4 +58,4 @@ function MainContent() {
   );
 }
 
-export default MainContent;
+export default Support;

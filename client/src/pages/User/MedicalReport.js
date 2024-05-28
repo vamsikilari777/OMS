@@ -65,6 +65,7 @@ function MedicalReportForm() {
   };
 
   return (
+    
     <div className="medical-report-form-container">
       <div className="form-sub-div">
         <h2>Medical Report Form</h2>
@@ -77,6 +78,7 @@ function MedicalReportForm() {
                   type="text"
                   id="name"
                   name="name"
+                  className="placeholder-color medi-text"
                   placeholder="Enter Name"
                   value={formData.name}
                   onChange={handleChange}
@@ -92,7 +94,7 @@ function MedicalReportForm() {
                   id="age"
                   name="age"
                   placeholder="Enter Age"
-                  
+                  className="placeholder-color"
                   value={formData.age}
                   onChange={handleChange}
                   required

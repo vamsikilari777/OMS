@@ -1,4 +1,4 @@
-/* Base Styles */
+
 .medical-report-form-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -32,24 +32,29 @@
   margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="select-one"],
+input[type="text"]::placeholder,
+input[type="number"]::placeholder{
+  background-color: #1d212a;
+  color:whitesmoke !important;
+  
+
+}
+
 input[type="file"],
-.select-one {
+.select-one, .placeholder-color {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  /* background-color: #2a2e38;
-  color: white; */
+  background-color: #1d212a;
+  color:whitesmoke !important
+  
 }
-
-/* input[type="text"]::placeholder,
-input[type="number"]::placeholder
-{
-  color:white;
+/* .medi-text{
+  background-color: #1d212a ;
 } */
+
+
 
 .submit-button {
   padding: 10px 20px;
@@ -72,12 +77,15 @@ h2 {
 }
 
 
+
+
 /* Medium screens (tablets) */
 @media only screen and (max-width: 768px) {
   .medical-report-form-container {
     padding: 15px;
     margin:30px;
     border-radius:10px;
+    background-color:rgb(103, 114, 125);
   }
 
   .form-sub-div {
@@ -100,54 +108,25 @@ h2 {
 
   h2 {
     font-size: 20px;
+    color:aliceblue !important;
   }
 }
 
-/* Small screens (mobile devices) */
-@media only screen and (max-width: 600px) {
-  .medical-report-form-container {
-    padding: 10px;
-    box-shadow: none;
-  }
-
-  .form-sub-div {
-    width: 100%;
-    padding: 10px;
-    box-shadow: none;
-    border: none;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  input[type="text"],
-  input[type="number"],
-  input[type="select-one"],
-  input[type="file"],
-  .select-one {
-    padding: 8px;
-    font-size: 14px;
-  }
-
-  .submit-button {
-    padding: 10px;
-    font-size: 16px;
-  }
-
-  h2 {
-    font-size: 18px;
-  }
-}
 
 /* Extra small screens (small mobile devices) */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 425px) {
   .medical-report-form-container {
-    padding: 8px;
+    padding: 10px ;
+    margin:10px ;
+    margin-top: 50px ;
   }
 
+  
+
   .form-sub-div {
-    padding: 8px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom:40px;
   }
 
   input[type="text"],
@@ -165,6 +144,16 @@ h2 {
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 30px;
+    margin-bottom: 20px;
   }
+  
+}
+
+
+
+/* support page styles */
+.suppor-placeholder-color::placeholder{
+  background-color: white !important;
+  color:black !important;
 }

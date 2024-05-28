@@ -26,10 +26,10 @@
   background-color: #5b5b5b;
   border: none !important;
 }
-
-
-
-
 .white-field{
   background-color:white  !important;
+}
+
+.placeholder-Styles::placeholder{
+  font-size: 6px !important;
 }

@@ -26,7 +26,7 @@ function App() {
             <Route path="/user" component={UserDashboard} />
             <Route path="/doctor" component={DoctorDashboard} />
             <Route path="/reception" component={ReceptionDashboard} />
-          </Switch>
+           </Switch>
         </div>
       </Router>
     </BrowserRouter>

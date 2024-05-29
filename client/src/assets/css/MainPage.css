@@ -184,7 +184,7 @@ button {
   }
 }
 
- /*devices (phones) */
+ /*devices (mobiles) */
 @media only screen and (max-width: 575.98px) {
 .sidebar.open{
 /* Position the sidebar */

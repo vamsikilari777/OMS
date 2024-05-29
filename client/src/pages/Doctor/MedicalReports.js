@@ -80,6 +80,7 @@ const HospitalTable = () => {
   const darkModeStyles = { backgroundColor: "#222", color: "#fff" };
 
   return (
+    // modified
     <div className="modified">
       <div
         style={darkMode ? darkModeStyles : null}

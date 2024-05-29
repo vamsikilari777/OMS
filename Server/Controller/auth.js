@@ -185,24 +185,27 @@ router.get("/reports", (req, res) => {
 
 const query = util.promisify(db.query).bind(db);
 
+
+
 router.get("/pdf/:id", async (req, res) => {
-  const reportId = req.params.id;
-  try {
-    const result = await query(
-      "SELECT reports FROM patient WHERE patient_id = ?",
-      [reportId]
-    );
-    if (result.length > 0) {
-      res.setHeader("Content-Type", "application/pdf");
-      res.send(result[0].reports); // Assuming reports is the column storing the BLOB data
-    } else {
-      res.status(404).send("Report not found");
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server error");
+const reportId = req.params.id;
+try {
+  const result = await query(
+    "SELECT reports FROM patient WHERE patient_id = ?",
+    [reportId]
+  );
+  if (result.length > 0) {
+    res.setHeader("Content-Type", "application/pdf");
+    res.send(result[0].reports); // Assuming reports is the column storing the BLOB data
+  } else {
+    res.status(404).send("Report not found");
   }
+} catch (error) {
+  console.error(error);
+  res.status(500).send("Server error");
+}
 });
+
 
 // Define route handlers
 router.post("/bookAppointments", (req, res) => {

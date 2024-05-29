@@ -31,7 +31,8 @@ export const NavHeader = ({
   };
 
   return (
-    <div className="">
+    // modified
+    <div className="side">
       <header className="sidebar-header d-flex justify-content-between align-items-center p-2">
         <div className="d-flex align-items-center">
           <button

@@ -74,13 +74,13 @@ button {
 }
 
 .sidebar-header {
-  /* display: flex; */
+  display: flex;
   position: fixed;
   height: 72px;
   border-bottom: 1px solid #2e303e;
   color: #586881;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
   width: 100%;
   background-color: #1d212a;
 }
@@ -184,6 +184,7 @@ button {
   }
 }
 
+
  /*devices (mobiles) */
 @media only screen and (max-width: 575.98px) {
 .sidebar.open{
@@ -210,3 +211,4 @@ overflow-y: auto; /* Enable vertical scrolling if needed */
   }
 
 }
+

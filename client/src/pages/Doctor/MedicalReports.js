@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+import "../../assets/css/Report.css";
 import baseURL from "../../config";
 
 const HospitalTable = () => {
@@ -79,82 +80,84 @@ const HospitalTable = () => {
   const darkModeStyles = { backgroundColor: "#222", color: "#fff" };
 
   return (
-    <Container
-      style={darkMode ? darkModeStyles : null}
-      className="w-90 h-80 pt-3 p-4"
-    >
-      <Form.Group controlId="search" className="mb-4">
-        <Form.Control
-          type="text"
-          placeholder="Search by Patient, Doctor, or Date..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          style={darkMode ? { backgroundColor: "#333", color: "#fff" } : null}
-        />
-      </Form.Group>
-      <Table striped bordered hover variant={darkMode ? "dark" : "light"}>
-        <thead>
-          <tr>
-            <th>Patient ID</th>
-            <th>Patient Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Disease</th>
-            <th>Reports</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.map((item, index) => (
-            <tr key={index}>
-              <td>{item.patient_id}</td>
-              <td>{item.name}</td>
-              <td>{item.age}</td>
-              <td>{item.gender}</td>
-              <td>{item.diseases}</td>
-              <td>
-                <Button
-                  variant="link"
-                  onClick={() => handlePdfOpen(item.patient_id)}
-                >
-                  View Report
-                </Button>
-              </td>
+    <div className="modified">
+      <div
+        style={darkMode ? darkModeStyles : null}
+        className=" w-100 pt-3"
+      >
+        <Form.Group controlId="search" className="mb-4 ps-2 pe-5">
+          <Form.Control
+            type="text"
+            placeholder="Search by Patient, Doctor, or Date..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            style={darkMode ? { backgroundColor: "#333", color: "#fff" } : null}
+          />
+        </Form.Group>
+        <Table striped bordered hover variant={darkMode ? "dark" : "light"}>
+          <thead>
+            <tr>
+              <th>Patient ID</th>
+              <th>Patient Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Disease</th>
+              <th>Reports</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-      <Pagination>
-        {Array.from(
-          { length: Math.ceil(filteredData.length / itemsPerPage) },
-          (_, index) => (
-            <Pagination.Item
-              key={index + 1}
-              onClick={() => paginate(index + 1)}
-              active={index + 1 === currentPage}
-              style={
-                darkMode ? { backgroundColor: "#333", color: "#fff" } : null
-              }
-            >
-              {index + 1}
-            </Pagination.Item>
-          )
-        )}
-      </Pagination>
+          </thead>
+          <tbody>
+            {currentItems.map((item, index) => (
+              <tr key={index}>
+                <td>{item.patient_id}</td>
+                <td>{item.name}</td>
+                <td>{item.age}</td>
+                <td>{item.gender}</td>
+                <td>{item.diseases}</td>
+                <td>
+                  <Button
+                    variant="link"
+                    onClick={() => handlePdfOpen(item.patient_id)}
+                  >
+                    View Report
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        <Pagination>
+          {Array.from(
+            { length: Math.ceil(filteredData.length / itemsPerPage) },
+            (_, index) => (
+              <Pagination.Item
+                key={index + 1}
+                onClick={() => paginate(index + 1)}
+                active={index + 1 === currentPage}
+                style={
+                  darkMode ? { backgroundColor: "#333", color: "#fff" } : null
+                }
+              >
+                {index + 1}
+              </Pagination.Item>
+            )
+          )}
+        </Pagination>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
-        <Modal.Header
-          closeButton
-          style={darkMode ? { backgroundColor: "#333", color: "#fff" } : null}
-        >
-          <Modal.Title>PDF Report</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-            <Viewer fileUrl={currentPdfUrl} />
-          </Worker>
-        </Modal.Body>
-      </Modal>
-    </Container>
+        <Modal show={showModal} onHide={() => setShowModal(false)} size="md">
+          <Modal.Header
+            closeButton
+            style={darkMode ? { backgroundColor: "#333", color: "#fff" } : null}
+          >
+            <Modal.Title>PDF Report</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+              <Viewer fileUrl={currentPdfUrl} />
+            </Worker>
+          </Modal.Body>
+        </Modal>
+      </div>
+    </div>
   );
 };
 

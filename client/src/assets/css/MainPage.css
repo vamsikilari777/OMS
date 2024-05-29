@@ -194,7 +194,7 @@ left: 0;
 bottom: 0;
 font-size: 12px;
 width: 250px; /* Adjust width as needed */
-height: 100vh;
+height: 100%;
 background-color: #1d212a; /* Sidebar background color */
 z-index: 1000; /* Ensure the sidebar is above other content */
 overflow-y: auto; /* Enable vertical scrolling if needed */
@@ -202,7 +202,7 @@ overflow-y: auto; /* Enable vertical scrolling if needed */
   .sidebar-header {
     position: fixed;
     top: 0px;
-    width: 100%;
+    width: 100vw;
     z-index: 1000; /* Ensure it stays above other content */
   }
   .e_con{

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
-  Container,
   Table,
   Form,
   Button,
@@ -84,7 +83,7 @@ const HospitalTable = () => {
     <div className="modified">
       <div
         style={darkMode ? darkModeStyles : null}
-        className=" w-100 pt-3"
+        className="pt-3"
       >
         <Form.Group controlId="search" className="mb-4 ps-2 pe-5">
           <Form.Control

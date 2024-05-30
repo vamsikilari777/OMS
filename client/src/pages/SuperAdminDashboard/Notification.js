@@ -32,25 +32,10 @@ class App extends React.Component {
   render() {
     const { message } = this.state;
     return (
-      // <div>
-      //   <input
-      //     className="message-input"
-      //     type="text"
-      //     value={message}
-      //     onChange={this.handleInputChange}
-      //     placeholder="Enter message"
-      //   />
-      //   <button
-      //     className="mt-2 send-notification-button"
-      //     onClick={this.handleSendNotification}
-      //   >
-      //     Send Notification
-      //   </button>
-      // </div>
       <Card className="bg-dark text-light">
         <Card.Header>Notification Pannel</Card.Header>
         <Card.Body className="bg-secondary">
-          <Card.Title>
+          <Card.Title className="ctitle">
             This Notification Mannaged by Higher Authorities
           </Card.Title>
           <Card.Text>

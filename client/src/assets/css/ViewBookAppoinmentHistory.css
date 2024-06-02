@@ -1,0 +1,77 @@
+/* ViewBookAppointmentHistory.css */
+
+/* Styling for the main container */
+.view-book-appointment-history {
+  margin-top: 3rem;
+}
+
+/* Styling for the table */
+.view-book-appointment-history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Styling for table header */
+.view-book-appointment-history-th {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Styling for table rows */
+.view-book-appointment-history-tbody td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Alternate row background color */
+.view-book-appointment-history-tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover effect */
+.view-book-appointment-history-tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+/* Styling for the table responsive container */
+.view-book-appointment-history-table-responsive {
+  overflow-x: auto;
+}
+
+/* Media query for tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .view-book-appointment-history-th,
+  .view-book-appointment-history-tbody td {
+    font-size: 14px; /* Slightly smaller font size */
+    padding: 6px; /* Slightly smaller padding */
+  }
+}
+
+/* Media query for mobile phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .view-book-appointment-history-table-responsive {
+    overflow-x: auto;
+  }
+
+  .view-book-appointment-history-table {
+    width: auto;
+  }
+
+  .view-book-appointment-history-th,
+  .view-book-appointment-history-tbody td {
+    font-size: 12px; /* Smaller font size */
+    padding: 4px; /* Smaller padding */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+}
+
+/* Media query for small mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .view-book-appointment-history-th,
+  .view-book-appointment-history-tbody td {
+    font-size: 10px; /* Even smaller font size */
+    padding: 2px; /* Even smaller padding */
+  }
+}

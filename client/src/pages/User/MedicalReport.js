@@ -92,7 +92,7 @@ function MedicalReportForm() {
                   id="age"
                   name="age"
                   placeholder="Enter Age"
-                  
+                 
                   value={formData.age}
                   onChange={handleChange}
                   required

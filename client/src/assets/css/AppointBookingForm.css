@@ -1,35 +1,97 @@
-/* This is a Form Header CSS */
-.Form-header {
-  border-radius: 30px;
-  text-align: center;
-  position: fixed;
+.container {
+  max-width: 800px !important;
+  margin: auto;
 }
-.form-main {
-  box-shadow: 20px;
-  padding: 30px;
-  margin: 30px;
-  background-color: #1d212a;
+
+.cards {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #2a2e38 !important; /* Background color for the card */
+  color: #fff; /* Text color for the card */
 }
-.heading {
-  text-align: center;
-  margin-bottom: 10px;
+
+.card-header {
+  background-color: #2a2e38 !important; /* Background color for the card header */
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-controls,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #2a2e38 !important; /* Background color for input and select fields */
+  color: #fff !important; /* Text color for input and select fields */
+}
+
+.cards .form-controls,
+.cards .form-select {
+  background-color: #2a2e38 !important; /* Background color for input and select fields inside the card */
+  color: #fff !important; /* Text color for input and select fields inside the card */
+}
+
+.form-controls::placeholder,
+.form-select::placeholder {
+  color: white; /* Placeholder color */
+}
+
+.form-controls:focus,
+.form-select:focus {
   color: white;
-}
-.div-1 {
-  justify-content: space-around;
-}
-.Form {
-  box-shadow: 0 4px 8px rgba(103, 104, 103, 0.4);
-  border-radius: 8px !important;
-}
-.button {
-  background-color: #5b5b5b;
-  border: none !important;
+  border-color: #aaa;
+  outline: 0;
+  box-shadow: none;
 }
 
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
 
+.btn-primary:hover {
+  background-color: #0056b3;
+}
 
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
 
-.white-field{
-  background-color:white  !important;
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.alert {
+  margin-top: 20px;
+}
+.form-controls:focus{
+  color:white !important;
+  background-color: #2a2e38 !important;
+  border-color: inherit !important;
+ 
+  box-shadow: none !important;
 }

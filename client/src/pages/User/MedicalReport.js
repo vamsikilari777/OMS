@@ -92,7 +92,8 @@ function MedicalReportForm() {
                   id="age"
                   name="age"
                   placeholder="Enter Age"
-                  className="placeholder-color"
+
+                  className="placeholder-color
                   value={formData.age}
                   onChange={handleChange}
                   required

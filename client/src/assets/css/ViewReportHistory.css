@@ -1,0 +1,58 @@
+/* Mobile Styles (up to 767px) */
+@media (max-width: 767px) {
+  .view-report-history-table-responsive {
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
+  }
+
+  .table {
+    width: 100%; /* Make table occupy full width of its container */
+    border-collapse: collapse; /* Collapse table borders */
+  }
+
+  .table th,
+  .table td {
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to left */
+  }
+
+  .table thead {
+    display: none; /* Hide table header on small screens */
+  }
+
+  .table tbody tr {
+    display: block; /* Display table rows as block elements */
+    margin-bottom: 20px; /* Add spacing between table rows */
+    border: 1px solid #dddddd; /* Add border between rows */
+  }
+
+  .table tbody td {
+    display: flex; /* Use flexbox for better alignment */
+    justify-content: space-between; /* Align content with space between */
+  }
+}
+
+/* Tablet Styles (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .table th,
+  .table td {
+    padding: 10px; /* Increase padding for better readability on tablets */
+  }
+}
+
+/* Desktop Styles (1024px and above) */
+@media (min-width: 1024px) {
+  .table th,
+  .table td {
+    padding: 12px; /* Increase padding for better readability on desktop */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+
+  .table tbody tr {
+    margin-bottom: 15px; /* Reduce spacing between table rows for desktop */
+  }
+
+  /* Hover effect */
+  .table tbody tr:hover {
+    background-color: #f5f5f5; /* Change background color on hover */
+  }
+}

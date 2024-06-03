@@ -1,0 +1,53 @@
+/* History.css */
+
+/* Container styling */
+.history-container {
+  padding: 20px;
+}
+
+/* Button container */
+.history-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Individual button styling */
+.history-buttons .btn {
+  flex: 1 1 auto;
+}
+
+/* Table responsive container */
+.history-table-responsive {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  width: 100%; /* Set a constant width */
+}
+
+/* Ensure table doesn't shrink below a certain width */
+.history-table-responsive table {
+  min-width: 600px;
+}
+
+/* Media query for tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .history-buttons {
+    flex-direction: column;
+  }
+
+  .history-table-responsive {
+    margin-top: 10px;
+  }
+}
+
+/* Media query for mobile phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .history-buttons .btn {
+    margin-bottom: 10px;
+  }
+
+  .history-table-responsive table {
+    width: 100%;
+    min-width: unset;
+  }
+}

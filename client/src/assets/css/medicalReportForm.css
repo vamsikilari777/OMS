@@ -43,9 +43,14 @@ input[type="file"],
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
+  background-color:#2a2e38!important;
   border-radius: 5px;
+
+  color: white !important;
+  
   background-color: #1d212a;
-  color: whitesmoke !important;
+  
+
 }
 
 
@@ -62,6 +67,9 @@ input[type="file"],
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+::placeholder{
+  color: white !important;
 }
 
 h2 {

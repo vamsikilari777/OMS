@@ -1,3 +1,7 @@
+.headerScroll{
+  width: 100%;
+  height: 100%;
+}
 button {
   background: transparent;
   border: 0;
@@ -183,3 +187,32 @@ button {
     transform: translateX(0);
   }
 }
+
+
+ /*devices (mobiles) */
+@media only screen and (max-width: 575.98px) {
+.sidebar.open{
+/* Position the sidebar */
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+font-size: 12px;
+width: 250px; /* Adjust width as needed */
+height: 100%;
+background-color: #1d212a; /* Sidebar background color */
+z-index: 1000; /* Ensure the sidebar is above other content */
+overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+  .sidebar-header {
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+  .e_con{
+    font-size: 14px;
+  }
+
+}
+

@@ -2,7 +2,7 @@ import Dashboard from "../pages/User/Dashboard";
 import MedicalRecord from "../pages/User/MedicalReport";
 import Support from "../pages/User/Support";
 import Appointments from "../pages/User/BookAppointment";
-
+import History from '../pages/User/History'
 const menuItems = [
   {
     name: "Dashboard",
@@ -29,6 +29,11 @@ const menuItems = [
     name: "Support",
     icon: "forum_outlined",
     path: <Support />,
+  },
+  {
+    name: "History",
+    icon: "history",
+    path: <History />,
   },
 ];
 

@@ -20,7 +20,8 @@
 
 /* Table responsive container */
 .history-table-responsive {
-  overflow-x: auto;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  width: 100%; /* Set a constant width */
 }
 
 /* Ensure table doesn't shrink below a certain width */

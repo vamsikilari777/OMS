@@ -1,25 +1,31 @@
 import React from 'react';
 import '../assets/css/ViewBookAppoinmentHistory.css';
-// define the View Book Appoinment function
-const ViewBookAppointmentHistory = () => {
- 
 
+const ViewBookAppointmentHistory = () => {
   return (
     <div className="view-book-appointment-history">
       <div className="view-book-appointment-history-table-responsive">
-        <table className="view-book-appointment-history-table table-bordered">
+        <table className="table table-hover table-dark">
           <thead>
             <tr>
-              <th className="view-book-appointment-history-th">Appointment ID</th>
-              <th className="view-book-appointment-history-th">Patient Name</th>
-              <th className="view-book-appointment-history-th">Doctor Name</th>
-              <th className="view-book-appointment-history-th">Date</th>
-              <th className="view-book-appointment-history-th">Time</th>
-              <th className="view-book-appointment-history-th">Status</th>
+              <th>Appointment ID</th>
+              <th>Patient Name</th>
+              <th>Doctor Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
             </tr>
           </thead>
-          <tbody className="view-book-appointment-history-tbody">
-           
+          <tbody>
+            <tr>
+             
+            </tr>
+            <tr>
+             
+            </tr>
+            <tr>
+              
+            </tr>
           </tbody>
         </table>
       </div>

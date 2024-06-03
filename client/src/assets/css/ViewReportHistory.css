@@ -1,77 +1,58 @@
-/* ViewReportHistory.css */
-
-/* Styling for the main container */
-.view-report-history {
-  margin-top: 3rem;
-}
-
-/* Styling for the table */
-.view-report-history-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-/* Styling for table header */
-.view-report-history-th {
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-/* Styling for table rows */
-.view-report-history-tbody td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-/* Alternate row background color */
-.view-report-history-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-/* Hover effect */
-.view-report-history-tbody tr:hover {
-  background-color: #e9e9e9;
-}
-
-/* Styling for the table responsive container */
-.view-report-history-table-responsive {
-  overflow-x: auto;
-}
-
-/* Media query for tablets (max-width: 1024px) */
-@media (max-width: 1024px) {
-  .view-report-history-th,
-  .view-report-history-tbody td {
-    font-size: 14px; /* Slightly smaller font size */
-    padding: 6px; /* Slightly smaller padding */
-  }
-}
-
-/* Media query for mobile phones (max-width: 768px) */
-@media (max-width: 768px) {
+/* Mobile Styles (up to 767px) */
+@media (max-width: 767px) {
   .view-report-history-table-responsive {
-    overflow-x: auto;
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
   }
 
-  .view-report-history-table {
-    width: auto;
+  .table {
+    width: 100%; /* Make table occupy full width of its container */
+    border-collapse: collapse; /* Collapse table borders */
   }
 
-  .view-report-history-th,
-  .view-report-history-tbody td {
-    font-size: 12px; /* Smaller font size */
-    padding: 4px; /* Smaller padding */
-    white-space: nowrap; /* Prevent text wrapping */
+  .table th,
+  .table td {
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to left */
+  }
+
+  .table thead {
+    display: none; /* Hide table header on small screens */
+  }
+
+  .table tbody tr {
+    display: block; /* Display table rows as block elements */
+    margin-bottom: 20px; /* Add spacing between table rows */
+    border: 1px solid #dddddd; /* Add border between rows */
+  }
+
+  .table tbody td {
+    display: flex; /* Use flexbox for better alignment */
+    justify-content: space-between; /* Align content with space between */
   }
 }
 
-/* Media query for small mobile phones (max-width: 480px) */
-@media (max-width: 480px) {
-  .view-report-history-th,
-  .view-report-history-tbody td {
-    font-size: 10px; /* Even smaller font size */
-    padding: 2px; /* Even smaller padding */
+/* Tablet Styles (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .table th,
+  .table td {
+    padding: 10px; /* Increase padding for better readability on tablets */
+  }
+}
+
+/* Desktop Styles (1024px and above) */
+@media (min-width: 1024px) {
+  .table th,
+  .table td {
+    padding: 12px; /* Increase padding for better readability on desktop */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+
+  .table tbody tr {
+    margin-bottom: 15px; /* Reduce spacing between table rows for desktop */
+  }
+
+  /* Hover effect */
+  .table tbody tr:hover {
+    background-color: #f5f5f5; /* Change background color on hover */
   }
 }

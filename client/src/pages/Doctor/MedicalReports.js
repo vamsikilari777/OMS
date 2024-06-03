@@ -144,6 +144,7 @@ const HospitalTable = () => {
           )}
         </Pagination>
 
+
         <Modal show={showModal} onHide={() => setShowModal(false)} size="md">
           <Modal.Header
             closeButton
@@ -159,6 +160,25 @@ const HospitalTable = () => {
         </Modal>
       </div>
     </div>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
+    <Modal.Header
+      closeButton
+      style={darkMode ? { backgroundColor: "#333", color: "#fff" } : null}
+    >
+      <Modal.Title>PDF Report</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      {currentPdfUrl && (
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+          <Viewer fileUrl={currentPdfUrl} />
+        </Worker>
+      )}
+    </Modal.Body>
+  </Modal>
+</Container>
+
+
   );
 };
 

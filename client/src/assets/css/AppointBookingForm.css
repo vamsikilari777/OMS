@@ -55,6 +55,7 @@
   box-shadow: none;
 }
 
+
 .btn-primary {
   background-color: #007bff;
   color: #fff;
@@ -94,4 +95,11 @@
   border-color: inherit !important;
  
   box-shadow: none !important;
+
+.white-field{
+  background-color:white  !important;
+}
+
+.placeholder-Styles::placeholder{
+  font-size: 6px !important;
 }

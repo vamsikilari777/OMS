@@ -78,7 +78,7 @@ function AppointmentBookingModal() {
             <h3 className="heading-2">Appointment Details</h3>
           </div>
         </div>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} >
           <Row>
             <Col>
               <Form.Control 
@@ -86,6 +86,7 @@ function AppointmentBookingModal() {
                 placeholder="First name"
                 required
                 value={formData.first_name}
+                className="placeholder-Styles"
                 onChange={handleChange}
                 
               />

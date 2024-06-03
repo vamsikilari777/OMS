@@ -77,22 +77,23 @@ function MedicalReportForm() {
                   type="text"
                   id="name"
                   name="name"
+                  className="placeholder-color "
                   placeholder="Enter Name"
                   value={formData.name}
                   onChange={handleChange}
-                  
                   required
                 />
               </div>
 
               <div className="form-group">
                 <label htmlFor="age">Age:</label>
-                <input  
+                <input
                   type="number"
                   id="age"
                   name="age"
                   placeholder="Enter Age"
-                 
+
+                  className="placeholder-color
                   value={formData.age}
                   onChange={handleChange}
                   required
@@ -111,7 +112,7 @@ function MedicalReportForm() {
                   onChange={handleChange}
                   required
                 >
-                  <option value="" >Select Gender</option>
+                  <option value="">Select Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>
